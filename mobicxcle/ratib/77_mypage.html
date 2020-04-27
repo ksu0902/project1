@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Cinzel|Permanent+Marker&display=swap" rel="stylesheet">
+    
+    <style>
+        
+         * { margin: 0; padding: 0;}
+        html, body { width: 100%; height: 00px; background-color: #f6f5e9;  font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;}
+        #wrapper { width: 100%; height: 1500px; position: relative; top:750px; left: 50%; transform: translate(-50%,-50%);}
+        header { width: 1200px; height: 200px; position: relative; top:100px; left: 50%; transform: translate(-50%,-50%);}
+        .logoIcon { position: absolute; top: 35px; left: 50%; margin-left: -65px; }
+        .shoppingCartIcon { position: absolute; top: 80px; left: 90%; margin-left:-38px;}
+        .ProfileIcon { position: absolute; top: 80px; left: 100%; margin-left:-76px;}
+        a { text-decoration: none; color: inherit;}
+         /*----------------------------------------메뉴---------------------------------------------*/
+        ul,li { font-family: 'Vollkorn', serif; font-weight: 200;}
+        .menu-1 { text-align: center; position: relative; top:0px; z-index: 7}
+        .menu-1 > ul { display:inline-block; width: 100%; height: 60px; line-height: 60px; 
+                       border-top:1px solid #444; border-bottom: 1px solid #000; box-sizing: border-box;}/*-nav-*/
+        .menu-1 > ul >li { display: inline-block; width: 250px; font-size: 1.2rem; } /*--메인 메뉴--*/
+        .menu-1 > ul >li >a { display: block; text-decoration: none; color: inherit;  transition: .5s; cursor: default;} /*--메인A태그 메뉴--*/
+        .menu-1 > ul >li >a:after { content: ""; width: 0; height: 3; background-color: inherit; 
+                                    position: absolute; top: 45px; left: 50px; transition: .5s;}
+/*
+        .menu-1 > ul >li:hover >a { background-color: #dbdace; height: 58px; width: 250px; display: block; 
+                                    border-radius: 30px 0 30px 0;} --메인 호버--
+*/
+        .menu-1 > ul >li >a:hover::after { content: ""; width: 150px; height: 3px; background-color: #ccc4be;                                          position: absolute; top: 45px; left: 50px;}
+        .menu-1 li { position: relative; }
+        .menu-1 li li { position: relative; border: 1px solid #444; margin-top:10px; list-style: none; 
+                        font-size: .9rem; bottom: 0; font-weight: 200; height: 40px; line-height: 40px; 
+                        border-radius: 20px; transition: .5s; background-color: inherit;} /*--서브 메뉴 객체--*/
+       
+        .menu-1 li li:hover { height: 180%; top:200%; background-color: #8e8a66; color: white} /*--서브 메뉴 호버--*/
+        .menu-1 li li >a { display: block; text-decoration: none; color: inherit; }/*--서브 메뉴 A태그.--*/
+        .menu-1 ul ul { display: none; position: absolute; }  /*--서브 메뉴 전체.--*/
+        
+        .menu-1 li:hover > ul { display: block; text-align: center; width: 250px;}  /*--메인 호버하면 ul이 나타나는것.--*/
+         /*----------------------------------------네비게이션-----------------------------------------------*/
+        nav { width: 1200px; height: 1500px; position: relative; top:60%; left: 50%; transform: translate(-50%,-50%);}
+         /*----------------------------------------네비게이션 왼족-----------------------------------------------*/
+        .leftmenu { width: 230px; height: 620px;  position: relative; top: 100px; float: left;}
+        .leftmenu p { width: 210px;} /*--중요--*/
+        .leftcol { width: 2px; height: 620px; background-color: #424b35; float: left;}
+        .left1stRow { width: 230px; height: 100px; }
+        .left1stRow > p { position: relative; left: 20px; top:20px;}
+        .left1stRow > p:nth-of-type(1) { font-size: 1.8rem; font-weight: 700;}
+        .left1stRow > p:nth-of-type(2) { font-size: 1rem; font-weight: 800; color: #777;}
+        .leftF2ndRow { width: 230px; height: 150px; transform: .5s;}
+        .leftF3rdRow { width: 230px; height: 150px; transition: .5s;}
+        .leftF2ndRow  p, .leftF3rdRow  p, .leftF4thRow  p { position: relative; left: 20px; top:20px; }
+        .leftF2ndRow > p, .leftF3rdRow > p { position: relative; left: 20px; top: 30px; line-height: 40px; 
+                                             color: #444; font-weight: 300; font-size: .9rem; }
+        .leftF2ndRow > span, .leftF3rdRow > span, .leftF4thRow > span { font-size: 1.1rem; font-weight: 600; }
+        .leftF4thRow { width: 230px; height: 110px;}
+        .leftF4thRow > p { position: relative; left: 20px; top: 30px; line-height: 30px; color: #444; 
+                           font-weight: 300; font-size: .9rem;}
+        .leftF2ndRow:hover { width: 230px; height: 150px; background-color: ivory; border-radius: 0 20px 20px 0;}
+        .leftF3rdRow:hover { width: 230px; height: 150px; background-color: ivory; border-radius: 0 20px 20px 0;}
+        .leftF4thRow:hover { width: 230px; height: 110px; background-color: ivory; border-radius: 0 20px 20px 0;}
+        .leftF2ndRow > p:hover, .leftF3rdRow > p:hover, .leftF4thRow > p:hover { color: orangered; font-weight: 600;}
+        
+         /*----------------------------------------네비게이션 오른쪽 탑 고정-----------------------------------------------*/
+        .rightmenu { width: 950px; height: 1200px; position: relative; left: 100%; top: 700px;
+                     transform: translate(-100%,-50%);}
+        .right1strow { width: 950px; height: 250px; background-image: url(../imgs/my_page_bg_new8.png); 
+                       float: left;position: absolute; background-blend-mode: multiply; background-color: #f6f5e9;
+                       background-size: 100%; background-position: 0px -100px; }
+        .box1,.box2,.box3 { width: 250px; height: 230px;  float: left; 
+                            position: relative; border-radius: 20px;margin-left: 50px; top: 10px;}
+        .box1 > p,.box2 > p,.box3 > p { font-size: .9rem; font-weight: 800; position: absolute; left: 10px; top:10px; padding-left: 10px;}
+        .round { width: 150px; height: 150px; border-radius: 75px; position: absolute; background-color: ivory; 
+                 left: 50%; top: 60%; transform: translate(-50%,-50%);}
+        .rd1,.rd2,.rd3 { text-align: center; line-height: 150px; font-weight: 700; font-size: 2.2rem; }
+        .box1 > p,.box2 > p,.box3 > p { border-left: 3px solid #000;}
+        .box2 > button { width: 100px; height: 20px; border: 2px solid #ddd; position: absolute; left: 130px;                    top:8px; font-weight: 700; border-radius: 10px;}
+        .box2 > button:hover { background-color: #ccc; border: 1px solid #ccc; font-weight: 700; color: #444;}
+        /*----------------------------------------네비게이션 오른쪽 1----------------------------------------------*/
+/*-1-*/ .right2ndrow { width: 950px; height: 900px; position: relative; top: 350px; display: block;
+                       background-color: #f6f5e9;}
+        .title { width: 100%; height: 60px; background-color: #eae9d9; border-bottom: 2px solid #444; 
+                 position: relative; box-sizing: border-box; border-radius: 10px 10px 0 0;}
+        .title > p:nth-of-type(1) { position: absolute; font-weight: 700; font-size: 1.1rem; line-height: 70px;                                 left: 20px;}
+        .title > p:nth-of-type(2) { position: absolute; font-size: .8rem; font-weight: 600; color: #555; 
+                                    left: 100%;margin-left: -50px; top: 30px;}
+        .recentlytitle { width: 100%; height: 50px; float: left; position: absolute;
+                        border-bottom: 1px solid #ccc;}
+        .recently { font-weight: 500; line-height: 50px; text-align: center;}
+        .tit1 { width: 120px; height: 50px; position: absolute; }
+        .tit2 { width: 470px; height: 50px; position: absolute; left: 120px;}
+        .tit3 { width: 210px; height: 50px; position: absolute; left: 590px;}
+        .tit4 { width: 150px; height: 50px; position: absolute; left: 800px;}
+        .recently1row { width: 100%; height: 70px; float: left; position: absolute;
+                        top: 111px; line-height: 70px; text-align: center; border-bottom: 1px solid #ccc;}
+        .date { width: 120px; height: 70px; float: left;}
+        .recently1row > img { width: 50px; height: 70px; float: left;}
+        .subject { width: 420px; height: 70px; float: left; text-align: left; }
+        .orderNumber { width: 210px; height: 70px; float: left;}
+        .orderPrice { width: 150px; height: 70px; float: left;}
+        .recently2row { width: 100%; height: 70px; float: left; position: absolute; top: 181px; line-height: 70px; 
+                        text-align: center; border-bottom: 1px solid #ccc;}
+        .recently3row { width: 100%; height: 70px; float: left; position: absolute; top: 251px; line-height: 70px; 
+                        text-align: center; border-bottom: 1px solid #ccc;}
+        /*--2번째 오른쪽 시작--*/
+        .right3rdrow { width: 950px; height: 330px; position: relative; top: 400px;}
+        .imgs { width: 950px; height: 260px; position: absolute; top:70px; float: left;}
+        .imgs > div { width: 200px; height: 200px; float: left; margin-left: 30px;}
+        .imgs img { width: 200px; position: absolute; top: 20px;}
+        .imgs > div > p {position: relative; left: 20px; top:210px}
+        .day {position: relative; left: 730px; top: 40px;}
+        
+        /*----------------------------------------오른쪽 바뀌는거 2 쿠폰--------------------------------------------*/
+/*-2-*/ .right2ndrow2 { width: 950px; height: 900px; position: absolute; background-color: #f6f5e9;
+                        top:350px; display: none;}
+        .couponSave { width: 100%; height: 200px; position: relative;}
+        .couponSave p { margin-left: 20px; position: relative; top:20px;}
+        .couponSave >p:nth-child(1) { font-weight: 700; font-size: 1.2rem;}
+        .couponSave >p:nth-child(2) { font-weight: 600; font-size: .8rem; color: #444;}
+        .couponSave >p:nth-child(5) { font-weight: 600; font-size: .8rem; color: #444; position: absolute;                                       top:140px;}
+        .couponSave >p:nth-child(6) { font-weight: 600; font-size: .8rem; color: #444; position: absolute;                                       top:160px;}
+        .couponSave > input { width: 200px; height: 40px; position: absolute; border: 3px solid #000; 
+                              display: block; top: 80px; left: 20px;}
+        .couponSave > button { width: 60px; height: 46px; position: absolute; left: 225px; top:80px;
+                               background-color: #000; border: none; color: ivory; font-weight: 700; font-size: .9rem;}
+        .couponSave > button:hover { color: orangered;}
+        .couponListTitle { width: 100%; height: 70px; position: relative; top: 30px; border-bottom: 2px solid #000;}
+        .couponListTitle > p:nth-child(1) { font-size: 1.2rem; font-weight: 700; position: absolute; left: 20px;                                       top:20px;}
+        .couponListTitle > p:nth-child(2) { font-size: .7rem; font-weight: 600; color: #444; position: absolute;                                       left: 20px; top:45px;}
+        .couponListJul1 { width: 100%; height: 50px; border-bottom: 1px solid #444; float: left; 
+                          position: relative; top: 30px;background-color: #eae9d9; box-sizing: border-box; line-height: 50px; text-align: center;}
+        .couponListJul1 > p:nth-child(1) { width: 240px; height: 49px; float: left;}
+        .couponListJul1 > p:nth-child(2) { width: 220px; height: 49px; float: left;}
+        .couponListJul1 > p:nth-child(3) { width: 270px; height: 49px; float: left;}
+        .couponListJul1 > p:nth-child(4) { width: 220px; height: 49px; float: left;}
+        .couponListJul2,.couponListJul3,.couponListJul4 { width:100%; height: 50px; border-bottom: 1px solid #ccc; font-size: .8rem; font-weight: 600; position: relative; top: 30px; float: left; line-height: 50px; text-align: center; }
+        .couponListJul2 > p:nth-child(1),.couponListJul3 > p:nth-child(1),.couponListJul4 > p:nth-child(1) 
+        { width: 240px; height: 49px; float: left;}
+        .couponListJul2 > p:nth-child(2),.couponListJul3 > p:nth-child(2),.couponListJul4 > p:nth-child(2)
+        { width: 220px; height: 49px; float: left;}
+        .couponListJul2 > p:nth-child(3),.couponListJul3 > p:nth-child(3),.couponListJul4 > p:nth-child(3)
+        { width: 270px; height: 49px; float: left;}
+        .couponListJul2 > p:nth-child(4),.couponListJul3 > p:nth-child(4),.couponListJul4 > p:nth-child(4)
+        { width: 220px; height: 49px; float: left;}
+        .pagenumber2 { position: absolute; left: 50%; top:65%; transform: translate(-50%,-50%); font-weight: 700;
+                    text-decoration: underline;}
+/*-3-*/ .right2ndrow3 { width: 950px; height: 900px; position: absolute; top:350px; display: none;
+                        background-color: #f6f5e9;}
+        .pointnowtitle { width: 100%; height: 60px; position: relative; top: 0px; border-bottom: 2px solid #000; }
+        .pointnowtitle > p { font-size: 1.2rem; font-weight: 700; position: absolute; left: 20px; top:20px; }
+        .pointjul1 { width: 100%; height: 50px; border-bottom: 1px solid #444; float: left; position: relative; 
+                     top: 0px;background-color: #eae9d9; box-sizing: border-box; line-height: 50px; text-align: center;}
+        .pointjul2 { width:100%; height: 50px; border-bottom: 1px solid #ccc; font-size: .8rem; font-weight: 600; position: relative; top: 0px; float: left; line-height: 50px; text-align: center; }
+        .pointjul1 > p:nth-child(1),.pointjul2 > p:nth-child(1) { width: 240px; height: 49px; float: left;}
+        .pointjul1 > p:nth-child(2),.pointjul2 > p:nth-child(2) { width: 220px; height: 49px; float: left;}
+        .pointjul1 > p:nth-child(3),.pointjul2 > p:nth-child(3) { width: 240px; height: 49px; float: left;}
+        .pointjul1 > p:nth-child(4),.pointjul2 > p:nth-child(4) { width: 240px; height: 49px; float: left;}
+        .pointtext { width: 100%; height: 80px; position: relative; top:101px; font-size: .8rem;}
+        .pointtext > p:nth-child(1) { position: absolute; left: 20px; top:20px;}
+        .pointtext > p:nth-child(2) { position: absolute; left: 20px; top: 40px;}
+        .pointSaveListTitle { width: 100%; height: 60px; position: relative; top:140px;
+                              border-bottom: 3px solid #444;}
+        .pointSaveListTitle > p:nth-child(1) { font-size: 1.2rem; font-weight: 700; position: absolute; left: 20px; top:15px;}
+        .pointSaveListTitle > p:nth-child(2) { font-size: .7rem; font-weight: 700; position: absolute; left: 20px; top:40px;}
+        
+        /*--쿠폰 탭 메뉴--*/
+        input[type="radio"] { display: none;}
+        .point_tab{ width: 950px; height: 400px; position: relative; top: 150px;}
+        input[type="radio"] + label { width: 100px; height: 10px; display: inline-block; padding: 20px; 
+                                      background-color: #eae9db; color: #666; font-size: 1rem; text-align: center; 
+                                      line-height: 10px; cursor: pointer; font-weight: 200; border-radius: 10px 10px 0 0;}
+        input[type="radio"]:checked + label { background-color: #f1f0e0; color: #444; border-radius: 10px 10px 0 0; 
+                                              font-weight: 600;}
+        .tabbox { width: 950px; height: 250px; ; display: none; position: relative; top: -10px;} 
+        input[id="pitab01"]:checked ~ .tab1 { display: block; margin-top: 10px;}
+        input[id="pitab02"]:checked ~ .tab2 { display: block; margin-top: 10px;}
+        .tabpointJul1 { width: 100%; height: 50px; font-size: .8rem; font-weight: 700;
+                        position: relative; text-align: center; top: -10px; border-bottom: 1px solid #444;}
+        .tabpointJul2 { width: 100%; height: 50px; font-size: .8rem; font-weight: 700;  position: relative;
+                        text-align: center; top: -10px; border-bottom: 1px solid #ccc;}
+        .tabpointJul3 { width: 100%; height: 50px; font-size: .8rem; font-weight: 700;  position: relative;
+                        text-align: center; top: -10px; border-bottom: 1px solid #444;}
+        .tabpointJul1 > p { position: relative; top: 25px;}
+        .tabpointJul2 > p { position: relative; top: 15px;}
+        .tabpointJul3 > p { position: relative; top: 20px;}
+        .tabpointJul1 > p:nth-of-type(1),.tabpointJul2 > p:nth-of-type(1),.tabpointJul3 > p:nth-of-type(1) 
+        { width: 240px; height: 49px; float: left;}
+        .tabpointJul1 > p:nth-of-type(2),.tabpointJul2 > p:nth-of-type(2),.tabpointJul3 > p:nth-of-type(2)
+        { width: 220px; height: 49px; float: left;}
+        .tabpointJul1 > p:nth-of-type(3),.tabpointJul2 > p:nth-of-type(3),.tabpointJul3 > p:nth-of-type(3)
+        { width: 240px; height: 49px; float: left;}
+        .tabpointJul1 > p:nth-of-type(4),.tabpointJul2 > p:nth-of-type(4),.tabpointJul3 > p:nth-of-type(4)
+        { width: 240px; height: 49px; float: left;}
+        .pagenumber { position: absolute; font-weight: 700; text-align: center; top:220px;
+                    text-decoration: underline; width:950px;}
+        
+        
+/*-5-*/ .right2ndrow5 { width: 950px; height: 1300px; position: absolute; top:350px; display: block;
+                        background-color: #f6f5e9; }
+        .returnNotice { width: 950px; height: 450px; position: relative;}
+        .order { width:950px; height:450px; position: relative; float: left; background-color: #;}
+        .orderTitle1 { width 950px; height: 50px; border-bottom: 3px solid #000; background-color: #e4e3d3;
+                       font-weight: 700; font-size: 1.1rem; line-height: 50px;box-sizing: border-box; position: relative; }
+        .orderTitle2 { width: 950px; height: 50px; display: inline-block; position: relative; 
+                       background-color: ivory;}
+        .orderTitle2 > div { height: 50px; float: left; font-weight: 600; color: #444; font-size: .9rem;
+                             line-height: 50px; text-align: center; border-bottom: 1px solid #ccc;box-sizing: border-box; box-sizing: border-box; }
+        .orderTitle2 > div:nth-of-type(1) { width: 530px; text-align: left; }
+        .orderTitle2 > div:nth-of-type(2) { width: 120px;}
+        .orderTitle2 > div:nth-of-type(3) { width: 300px;}
+        .orderTitle3 { width: 950px; height: 50px; position: relative; top: -5px; border-bottom: 1px solid #ddd;                    background-color: ivory;}
+        .orderTitle3 > p { float: left; font-weight: 600; line-height: 50px; font-size: .8rem; position: relative;}
+        .orderTitle3 > p:nth-of-type(1) { width: 65px; left: 10px; font-weight: 300;}
+        .orderTitle3 > p:nth-of-type(2) { width: 120px; font-weight: 800;}
+        .orderTitle3 > p:nth-of-type(3) { width: 60px; font-weight: 300;}
+        .orderTitle3 > p:nth-of-type(4) { font-weight: 800;}
+        .orderList1,.orderList2 { width: 950px; height: 150px; float: left; position: relative;top:-5px; 
+                                  box-sizing: border-box; border-bottom: 1px solid #ddd;background-color: ivory;}
+        .orderList1_1,.orderList2_1 { width: 150px; height: 150px;position: relative; float: left;}
+        .orderList1_1 img,.orderList2_1 img { position: absolute; left:50%; top:55%; 
+                                              transform: translate(-50%,-50%);}
+        .orderList1_2,.orderList2_2 { width: 380px; height: 150px; float: left; position:relative;}
+        .orderList1_2 p,.orderList2_2 p { position: relative; left: 20px;}
+        
+        .orderList1_2 p:nth-of-type(1),.orderList2_2 p:nth-of-type(1) 
+        { font-weight: 800; font-size: 1.4rem; top: 30px;}
+        .orderList1_2 p:nth-of-type(2),.orderList2_2 p:nth-of-type(2) 
+        { font-weight: 600; top: 50px;}
+        .orderList1_3,.orderList2_3 { width: 120px; height: 150px; float: left; line-height: 150px; 
+                                      text-align: center; font-weight: 600;}
+        .orderList1_4,.orderList2_4 { width: 300px; height: 150px; float: left;}
+        .orderList1_4 p ,.orderList2_4 p { text-align: center; position: relative;}
+        .orderList1_4 p:nth-of-type(1),.orderList2_4 p:nth-of-type(1) { font-weight: 800; font-size: 1.5rem;       top:40px;}
+        .orderList1_4 p:nth-of-type(2),.orderList2_4 p:nth-of-type(2) { font-size: .8rem; font-weight: 800; top: 40px;}
+        .orderList1_4 p:nth-of-type(3),.orderList2_4 p:nth-of-type(3) { text-decoration: underline; color: blue; top: 40px;}
+        
+        /*5-2*//*5-2*//*5-2*//*5-2*//*5-2*/
+        .deliveryStep { width: 950px; height: 320px; position: relative; z-index: 1; background-color: ivory;top:50px; overflow: hidden;}
+        .deliveryStep_title { width 950px; height: 50px; border-bottom: 3px solid #000;
+                       font-weight: 700; font-size: 1.1rem; line-height: 50px; box-sizing: border-box; position: relative; background-color: #e4e3d3;}
+        .stepRound { width: 130px; height: 190px;float: left; position: relative; top:20px;}
+        .stepRound > div { width: 120px; height: 120px; background-color: #d1d1b6; border-radius: 60px; text-align: center; line-height: 120px; color: #000; font-weight: 700;}
+        .stepRound p { font-weight: 600; color: #444; font-size: .8rem; text-align: center; position: relative; top: 10px;}
+        .step1 { position: relative; left: 10px;}
+        .step2 { position: relative; left: 40px;}
+        .step3 { position: relative; left: 70px;}
+        .step4 { position: relative; left: 100px;}
+        .step5 { position: relative; left: 130px;}
+        .step6 { position: relative; left: 160px;}
+        .arrow { width: 20px; height: 40px; position: absolute; background: url(../btnIcon/soppingcart_newicon.svg); background-size: 1000px; top: 170px; z-index: 3}
+        .arr1 { left: 140px;}
+        .arr2 { left: 300px;}
+        .arr3 { left: 460px;}
+        .arr4 { left: 620px;}
+        .arr5 { left: 780px;}
+        .cancletitle { width: 950px; height: 60px;position: relative; top:20px; float: left;}
+        .cancleOkay { width: 300px; height: 60px; position: absolute; float: left;}
+        .cancleNo { width: 650px; height: 60px; position: absolute; left: 300px; float: left;}
+        .cancleOkay > span { width: 300px; height: 15px;position: absolute; left: 15px; top: 10px;
+                             background: url(../btnIcon/line.svg); background-size: 650px;}
+        .cancleOkay > P,.cancleNo > p { position: absolute; left: 50%; top:60%; transform: translate(-50%,-50%);
+                          font-weight: 700; font-size: .9rem; overflow: hidden;}
+        .cancleNo > span { width: 630px; height: 10px; position: absolute; top:10px; left: 15px;
+        background: url(../btnIcon/line.svg); background-size: 650px; background-position: 27px 10px;}
+       
+        /*5-3*//*5-3*//*5-3*//*5-3*//*5-3*/
+        .return_area { width: 950px; height: 350px; position: relative; top: 100px;
+        overflow: hidden;}
+        .returnTitle { width 950px; height: 100px; border-bottom: 3px solid #000;
+                       box-sizing: border-box; position: relative; background-color: #e4e3d3;}
+        .returnTitle > p { position: relative; left: 10px; width: 900px;}
+        .returnTitle > p:nth-of-type(1) { font-size: 1.2rem; font-weight: 700; top:20px;}
+        .returnTitle > p:nth-of-type(2) { font-size: .8rem; top:30px;}
+        .return2 { width 950px; height: 100px; background-color:#f6f5e9;}
+        .return2 > p { position: relative; left: 10px; width: 900px;}
+        .return2 > p:nth-of-type(1) { font-size: 1.1rem; top:20px;}
+        .return2 > p:nth-of-type(2) { font-size: .8rem; top:30px;}
+        .returnStepList { width: 950px; height: 150px; background-color: ivory; float: left;}
+        .returnStepList > div { float: left; width: 210px; height: 100px; border: 1px solid #ddd; position: relative; top: 25px; text-align: center; margin: }
+        .returnStepList > div:nth-of-type(1) { left: 20px;}
+        .returnStepList > div:nth-of-type(2) { left: 40px;}
+        .returnStepList > div:nth-of-type(3) { left: 60px;}
+        .returnStepList > div:nth-of-type(4) { left: 80px;}
+        .returnStepList > div > p:nth-of-type(1) { position: relative; top: 15px;}
+        .returnStepList > div > p:nth-of-type(2) { position: relative; top: 25px; font-size: .8rem;} 
+         /*-------------------------------------------푸터----------------------------------------------*/
+        #wrapper2 { width: 100%; height: 550px;position: relative; top: 700px;}
+        .footerBg { width: 100%; height: 550px; position: absolute; top:20px opacity: .8;
+       }
+        footer { width: 1200px; height: 470px; position: absolute; left: 50%; top: 310px; 
+                 transform: translate(-50%,-50%);}
+        /*--------------------------------------------푸터 왼 쪽----------------------------------------*/
+        .footer_left_area { width: 600px; height: 470px; position: relative; float: left; top:0px;
+                            font-family: 'Apple SD Gothic NEO',sans-serif!important; }
+        .footer_left_area > h1 { font-weight: 900; font-size: 2.5rem; position: absolute; top: 100px; left: 20px;
+                                 font-family: 'Apple SD Gothic NEO',sans-serif!important;}
+        .footer_left_area > span { width: 90px; height: 5px; background-color: #000; position: absolute; 
+                                   left: 65px; top:90px;}
+        .open_time { position: absolute; font-size: .8rem; font-weight: 700; color: #666; top: 160px; left: 20px;}
+        .thin_row1 { position: absolute; top: 210px; left: 20px; width: 500px; height: 2px; 
+                     background-color: #000;}
+        .insIcon { position: relative; top: 220px; left: 10px; margin: 10px; transition: .3s;}
+        .insIcon:hover { position: relative; top: 210px; }
+        .thin_row2 { position: absolute; top: 300px; left: 20px; width: 500px; height: 2px; background-color: #000;}
+        .domain { position: absolute; top:330px; left: 20px; font-size: .8rem; font-weight: 700; color: #fff;}
+        /*--------------------------------------------푸터 오른쪽----------------------------------------*/
+        .footer_right_area { width: 600px; height: 470px; float: left; position: relative; top:0px;}
+        .category { font-size: 1.2rem; font-weight: 600; color: #444; float: left; margin-right: 60px; 
+                    position: relative; top: 90px;}
+        .sur_ { position: absolute; font-size: .7rem; font-weight: 700; color: #666; line-height: 20px; 
+                width: 100px; top: 120px;}
+        .category5 { left: 0px; top: 100px;  width: 100px;}
+        .category6 { left: 115px;}
+        .category7 { left: 240px;}
+        .subcri { font-size: 1.3rem; font-weight: 700; position: absolute; top: 220px;}
+        input[type="text"] { width: 200px; height: 20px; border: 1px solid #fff; background-color: inherit;                              position: absolute; top:310px; left: 0; color: #fff; font-weight: 700; padding: 5px;}
+        .subcri_btn { width: 100px; height: 30px; background-color: #fff; line-height: 32px; position: absolute;                 top:310px; left: 260px; text-align: center; font-weight: 700; }
+        .subcri_btn:hover { background-color: #000; color: orangered;}
+        
+/*        .pd1 h3::after {content: ''; display: block; position: absolute; top:50%; left: 0; margin-top:-50px; width:100%; height: 130px; background-color: beige; transition: all .5s; opacity: 0.5; }*/
+    </style>
+</head>
+<body>
+   
+    <div id="wrapper">
+        
+        <header>
+            <a href="100_mainLayout.html"><img src="../imgs/brand_logo_not_BG.png" width="130px" class="logoIcon"></a>
+            <a href="46_(F)shoppingCart(1).html"><img src="../imgs/basket.svg" width="38px" class="shoppingCartIcon"></a>
+            <a href="77_mypage.html"><img src="../imgs/profile.svg" width="38px" class="ProfileIcon"></a>
+        </header>
+        <section class="menu-1">
+                <ul>
+                    <li><a href="">Ratib</a>
+                        <ul>
+                            <li><a href="50_aboutus.html">About Us</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="">Product</a>
+                        <ul>
+                            <li><a href="42_(F)DetoxJuiceList.html">Detox juice</a></li>
+                            <li><a href="43_(F)PowderList.html">1 day Powder</a></li> 
+                            <li><a href="44_(F)skincareList.html">Skin care</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Community</a>
+                        <ul>
+                            <li><a href="48_notice.html">Notice</a></li>
+                            <li><a href="48_3_qna.html">Q &amp; a</a></li> 
+                            <li><a href="48_2_review.html">Review</a></li>
+                        </ul>
+                    </li>
+                </ul>
+        </section>
+        
+        <nav>
+            <div class="leftmenu">
+                <div class="leftcol"></div>
+                <div class="left1stRow">
+                    <p class="pname">김성욱님</p>
+                    <p class="email">ksu0902@gmail.com</p>
+                </div>
+                <div class="leftF2ndRow">
+                    <span><p class="myshopping">나의 쇼핑정보</p></span>
+                    <p class="deliverychk"><a href="#">주문배송조회</a></p>
+                    <p class="returnchk"><a href="#">취소/교환/반품 내역</a></p>
+                    
+                </div>
+                <div class="leftF3rdRow">
+                    <span><p class="mycount">나의 계정설정</p></span>
+                    
+                    <p class="pointchk"><a href="#">포인트 현황</a></p>
+                    <p class="couponchk"><a href="#">쿠폰</a></p>
+                </div>
+                <div class="leftF4thRow">
+                    <span><p class="customercenter">고객센터</p></span>
+                    <p class="qnachk"><a href="#">Q&amp;A 문의내역</a></p>
+                  
+                </div>
+            </div>
+            <div class="rightmenu">
+                <div class="right1strow">
+                   <div class="box1">
+                       <p>회원등급</p>
+                       <span class="round rd1">
+                           <p>Red</p>
+                       </span>
+                   </div> 
+                   <div class="box2">
+                       <p>사용가능쿠폰</p>
+                       <button><a href="21_coupon.html">쿠폰페이지</a></button>
+                       <span class="round rd2">
+                           <p><a href="#">10 개</a></p>
+                       </span>
+                   </div> 
+                   <div class="box3">
+                       <p>포인트</p>
+                       <span class="round rd3">
+                           <p><a href="#">99,999</a></p>
+                       </span>
+                   </div> 
+                    
+                    
+                </div>
+                <div class="tabs-pannel right2ndrow" id="change1">
+                    <div class="right2ndrow1">
+                        <div class="top title">
+                            <p>최근주문</p>
+                            <p>더보기 +</p>
+                        </div>
+                        <div class="recentlytitle">
+                            
+                            <p class="recently tit1">주문일</p>
+                            <p class="recently tit2">주문내역</p>
+                            <p class="recently tit3">주문번호</p>
+                            <p class="recently tit4">결제금액</p>
+                            
+                        </div>
+                        <div class="recently1row">
+                                <p class="date">2020.02.20</p>
+                                <img src="../imgs/Abc_juice.png" width="50px">
+                            <a href="#">
+                                <p class="subject">&nbsp;&nbsp;&nbsp;abc Juice</p>
+                                <p class="orderNumber">KEU0099222-1829385</p>
+                                <p class="orderPrice">999,999 원</p>
+                            </a>
+                        </div>
+                        <div class="recently2row">
+                                <p class="date">2020.02.20</p>
+                                <img src="../imgs/Abc_juice.png" width="50px">
+                            <a href="#">
+                                <p class="subject">&nbsp;&nbsp;&nbsp;abc Juice</p>
+                                <p class="orderNumber">KEU0099222-1829385</p>
+                                <p class="orderPrice">999,999 원</p>
+                            </a>
+                        </div>
+                        <div class="recently3row">
+                                <p class="date">2020.02.20</p>
+                                <img src="../imgs/Abc_juice.png" width="50px">
+                            <a href="#">
+                                <p class="subject">&nbsp;&nbsp;&nbsp;abc Juice</p>
+                                <p class="orderNumber">KEU0099222-1829385</p>
+                                <p class="orderPrice">999,999 원</p>
+                            </a>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="tabs-pannel right3rdrow">
+                        <div class="top title">
+                            <p>찜 목록</p>
+                            <p>더보기 +</p>
+                        </div>
+                        <div class="imgs">
+                           <div><img src = "../imgs/blacksesame_powder.png" >
+                           <p>blacksesame powder</p>
+                           </div>
+                           <div><img src = "../imgs/matcha_powder.png">
+                           <p>matcha powder</p></div>
+                           <div><img src = "../imgs/skin-care5.png">
+                           <p  class="skin">travel Kit</p></div>
+                           <div><img src = "../imgs/1daypowder.png" class="day">
+                           <p >1 day Powder</p></div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="tabs-pannel right2ndrow2" id="">
+                    <div class="couponSave">
+                    <p>쿠폰 발급 및 포인트 적립</p>
+                    <p><small>라티브의 상품권 및 보너스쿠폰 번호를 입력하세요</small></p>
+                    <input type="text"><button>받기</button>
+                    <p> - 쿠폰의 발급 기간 / 마일리지 적립 기간을 꼭 확인해주세요.</p>
+                    <p> - 마일리지 적립 쿠폰 코드로 적립한 마일리지는 'MY > 마일리지 현황' 에서 확인하실 수 있습니다.</p>
+                    </div>
+                    <div class="couponListTitle">
+                        <p>보유 쿠폰</p>
+                        <p>자동 로그인을 사용하신다면 로그아웃 > 재로그인 으로 회원정보를 업데이트 하시면 보너스 쿠폰 확인이 가능합니다.</p>
+                    </div>
+                    <div class="couponListJul1">
+                        <p>쿠폰명</p>
+                        <p>사용혜택</p>
+                        <p>사용기준</p>
+                        <p>유효기간</p>
+                    </div>
+                    <div class="couponListJul2">
+                        <p>RED 회원 10% 할인 쿠폰</p>
+                        <p>10% 할인</p>
+                        <p></p>
+                        <p>2020.2.1 ~ 2020.2.29</p>
+                    </div>
+                    <div class="couponListJul3">
+                        <p>RED 회원 10% 할인 쿠폰</p>
+                        <p>10% 할인</p>
+                        <p></p>
+                        <p>2020.2.1 ~ 2020.2.29</p>
+                    </div>
+                    <div class="couponListJul4">
+                        <p>RED 회원 10% 할인 쿠폰</p>
+                        <p>10% 할인</p>
+                        <p></p>
+                        <p>2020.2.1 ~ 2020.2.29</p>
+                    </div>
+                    <div class="pagenumber2">
+                        <p>1</p>
+                    </div>
+                </div>
+                
+                <div class="tabs-pannel right2ndrow3" id="">
+                    <div class="pointnowtitle">
+                        <p>포인트 현황</p>
+                    </div>
+                    <div class="pointjul1">
+                        <p>현재 포인트</p>
+                        <p>적립 포인트</p>
+                        <p>사용한 포인트</p>
+                        <p>소멸된 포인트</p>
+                    </div>
+                    <div class="pointjul2">
+                        <p>9,208 point</p>
+                        <p>18,396 point</p>
+                        <p>-9,188 point</p>
+                        <p>0 point</p>
+                    </div>
+                    <div class="pointtext">
+                        <p>+ 포인트는 부여된 해로부터 5년 이내에 사용하셔야 합니다.</p>
+                        <p>+ 특정 이벤트 당첨 포인트는 이벤트 기한내에서만 사용이 가능하고 미사용 적립금은 소멸됩니다.</p>
+                    </div>
+                    
+                    <div class="pointSaveListTitle">
+                        <p>마일리지 적립 및 사용</p>
+                        <p>마일리지는 적립 및 사용하신 내역입니다. (주문 마일리지는 주문 내역 조회에서 확인 가능합니다.)</p>
+                    </div>
+                    
+                    
+                  <div class="point_tab">
+                    <input type="radio" name="pointtab" id="pitab01" checked>
+                    <label for="pitab01">적립한 포인트</label>
+                    <input type="radio" name="pointtab" id="pitab02">
+                    <label for="pitab02">사용한 포인트</label>
+  
+                    <div class="tabbox tab1">
+                        <div class="tabpointJul1">
+                           <p>적용일자</p>
+                           <p>적용내용</p>
+                           <p>포인트</p>
+                           <p>관련주문번호</p>
+                        </div>
+                        <div class="tabpointJul2">
+                            <p>2019.09.06</p>
+                            <p>주문적립</p>
+                            <p>218</p>
+                            <p>ORD20190827-2229153</p>
+                        </div>
+                        <div class="tabpointJul3">
+                            <p>2019.09.06</p>
+                            <p>상품리뷰등록</p>
+                            <p>100</p>
+                            <p>ORD20190824-2072532</p>
+                        </div>
+                        <div class="pagenumber point">
+                            <p>1</p>
+                        </div>
+                    </div>
+                    <div class="tabbox tab2">
+                        <div class="tabpointJul1">
+                             <p>적용일자</p>
+                             <p>적용내용</p>
+                             <p>포인트</p>
+                             <p>관련주문번호</p>
+                        </div>
+                        <div class="tabpointJul2">
+                             <p>2019.08.24</p>
+                             <p>주문사용</p>
+                             <p>-4,594</p>
+                             <p>ORD20190827-2229153</p>
+                        </div>
+                        <div class="tabpointJul3">
+                              <p>2019.08.14</p>
+                              <p>주문사용</p>
+                              <p>-1,000</p>
+                              <p>ORD20190824-2072575</p>
+                        </div>
+                        <div class="pagenumber point">
+                              <p>1</p>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+     <!--4-->   <div class="tabs-pannel right2ndrow4" id="">
+                    <div class="profileEdit">
+                       <p>회원정보</p>
+                       <button>본인인증 정보 수정하기</button>
+                        <div class="profileleft">
+                           <p>성명</p> 
+                           <p>연락처</p> 
+                           <p>생일</p> 
+                           <p>성별</p>
+                        </div>
+                        <div class="profileright">
+                            <p>김성욱</p>
+                            <p>010-6501-8114</p>
+                            <p>1992년 09월 02일</p>
+                            <p>여</p>
+                        </div>
+                        
+                    </div>
+                </div>
+     <!--5-->   <div class="tabs-pannel right2ndrow5" id="">
+                    <div class="returnNotice">
+                        <div class="order">
+                           <div class="orderTitle1">&nbsp;&nbsp;주문배송 조회</div>
+                           <div class="orderTitle2">
+                           <div>&nbsp;&nbsp;상품정보</div>
+                           <div>배송비</div>
+                           <div>진행상태</div>
+                           </div>
+                           <div class="orderTitle3">
+                                <p>주문일자</p>
+                                <p>2020.02.02</p>
+                                <p>주문번호</p>
+                                <p>999999-9999999</p>
+                           </div>
+                           <div class="orderList1">
+                                <div class="orderList1_1">
+                                    <img src="../imgs/skin-care2.png" width="150px">
+                                </div>
+                                <div class="orderList1_2">
+                                    <p>abc juice</p>
+                                    <p>가격 및 수량</p>
+                                </div>
+                                <div class="orderList1_3">
+                                    <p>3,000원</p>
+                                </div>
+                                <div class="orderList1_4">
+                                    <p>배송완료</p>
+                                    <p>cj대한통운</p>
+                                    <p>620777912870</p>
+                                </div>
+                            </div>
+                            <div class="orderList2">
+                                <div class="orderList2_1">
+                                    <img src="../imgs/skin-care2.png" width="150px">
+                                </div>
+                                <div class="orderList2_2">
+                                    <p>abc juice</p>
+                                    <p>가격 및 수량</p>
+                                </div>
+                                <div class="orderList2_3">
+                                    <p>3,000원</p>
+                                </div>
+                                <div class="orderList2_4">
+                                    <p>배송완료</p>
+                                    <p>cj대한통운</p>
+                                    <p>620777912870</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                         
+                    </div>
+                    
+                    <div class="deliveryStep">
+                        <div class="deliveryStep_title">&nbsp;&nbsp;주문상태 취소기간 안내</div>
+                        <div class="stepRound step1">
+                            <div>입금대기</div>
+                            <p>입금 전 상태입니다<br>(3일 이내미입금 시 자동취소)</p>
+                        </div>
+                        <span class="arrow arr1"></span>
+                        <div class="stepRound step2">
+                            <div>결제완료</div>
+                            <p>입금(결제) 확인이<br>완료되었습니다</p>
+                        </div>
+                        <span class="arrow arr2"></span>
+                        <div class="stepRound step3">
+                            <div>상품 준비중</div>
+                            <p>주문하신 상품을 발송할<br>예정입니다</p>
+                        </div>
+                        <span class="arrow arr3"></span>
+                        <div class="stepRound step4">
+                            <div>배송시작</div>
+                            <p>상품준비가 완료되어<br>곧 배송 될 예정입니다</p>
+                        </div>
+                        <span class="arrow arr4"></span>
+                        <div class="stepRound step5">
+                            <div>배송중</div>
+                            <p>상품이 고객님께 <br>배송중입니다</p>
+                        </div>
+                        <span class="arrow arr5"></span>
+                        <div class="stepRound step6">
+                            <div>배송완료</div>
+                            <p>상품이 주문자에게 전달<br>완료 되었습니다</p>
+                        </div>
+                        <div class="cancletitle">
+                            <div class="cancleOkay">
+                                <span></span>
+                                <p>직접취소가능</p>
+                            </div>
+                            <div class="cancleNo">
+                                <span></span>
+                                <p>취소불가</p>
+                            </div>    
+                        </div>
+                    </div>
+                    <div class="return_area">
+                            <div class="returnTitle">
+                            <p>반품안내</p>
+                            <p>
+                               불량 및 파손에 의한 반품을 제외한, 고객 변심에 의한 반품은 출고일로부터 7일 이후(평일기준)에는 불가합니다.<br>
+                               상품의 배송구분에 따라 반품방식이 다르니, 이점 유의하시기 바랍니다.
+                            </p>
+                            </div>
+                            <div class="return2">
+                                <p><b>반품절차</b><br></p>
+                                  <p>번거로우시겠지만, 직접 반품을 해주셔야 합니다. 가능하시면 상품을 수령한 택배회사를 이용해주세요.<br>
+                                  업체별 개별기준이 있는 경우, 해당 기준이 우선 적용 됩니다 (해당 상품의 상품페이지 참고)</p>  
+                                
+                            </div>
+                      
+                        <div class="returnStepList">  
+                            <div class="returnStep1">
+                                <p><b>반품접수</b></p>
+                                <p>반품신청을 하신 후, 반품하실<br>
+                                   상품을 받으신 상태로<br>
+                                   재포장해주세요.</p>
+                            </div>
+                            <span></span>
+                            <div class="returnStep2">
+                                <p><b>택배발송</b></p>
+                                <p>해당 택배사로 연락 후 업체로<br>
+                                   직접 상품을 보내주세요.<br></p>
+                            </div>
+                            <span></span>
+                            <div class="returnStep3">
+                                <p><b>반품진행</b></p>
+                                <p>택배 발송을 후[취소/교환/반품 내역]에<br>
+                                   보내신 송장번호를 입력해주세요.<br></p>
+                            </div>
+                            <span></span>
+                            <div class="returnStep4">
+                                <p><b>반품완료</b></p>
+                                <p>반품된 상품을 확인 후 결제취소<br>
+                                   또는 환불을 해드립니다.<br></p>
+                            </div>   
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </nav>
+      
+    </div>
+     
+    <div id="wrapper2" class="wrapper">
+       <img src="../imgs/footer.png" class="footerBg">
+        <footer>
+            <div class="footer_left_area">
+                    <span class="h1row"></span>
+                    <h1 class="tel">070-4133-9999</h1>
+                    <p class="open_time">
+                    AM 10:00 ~ PM 05:00 Off-time PM 12:00 ~ PM 02:00 <br>
+                    DAY OFF (SATURDAY. SUNDAY, HOLIDAY)
+                    </p>
+                    <div class="thin_row1"></div>
+                    <a href="#"><img src="../btnIcon/instagram_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="../btnIcon/facebook_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="../btnIcon/twitter_btn.svg" width="48px" class="insIcon"></a>
+                    <div class="thin_row2"></div>
+                    <p class="domain">
+                    사업자명 (주)네이키드베지터블스 ㅣ 대표이사 윤예린 ㅣ 사업자등록번호 356-81-01648<br>
+                    대표전화 070-4133-9999 ㅣ 통신판매업신고번호 제 2019-성남분당B-0439 호<br>
+                    주소 서울특별시 서초구 강남대로 39길 6-7, 154 개인정보보안책임자 윤예린 070-4133-9999 ㅣ<br>
+                    copyright (c) All Right Reserved Hosting by wook</p>
+            </div>
+            <div class="footer_right_area">
+                    <p class="category">Ratib&nbsp;&nbsp;</p>   
+                    <p class="category">Product</p>   
+                    <p class="category">Community</p>   
+                    <p class="category">Mypage</p><br>
+                    <p class="sur_ category5"><br>about us</p>  
+                    <p class="sur_ category6">Detox Juice<br>1 Day powder<br>Skin care</p>  
+                    <p class="sur_ category7">Notice<br>QnA<br>Review</p> 
+                    <p class="subcri">
+                    Join our newsletter and keep up to date<br>
+                    with the latest products, special offers from RATIB.
+                    </p>
+                    <input type="text" placeholder="Enter E-mail">
+                    <div class="subcri_btn">Subcribe</div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+    
+    
+    
+    
+    </script>
+</body>
+</html>

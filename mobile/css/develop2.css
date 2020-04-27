@@ -1,0 +1,22 @@
+.subvisual img { width: 100%;}
+#content { clear: both; overflow: hidden;}
+#content h2 { font-weight: bold; font-size: 20px; color: #777; padding: 15px 20px 20px 20px;}
+#content h2::before {content: ""; width: 9px; height: 22px; background: #0090C2; display: block; float: left; margin-right: 5px;}
+.list { padding: 20px 10px 20px 20px; overflow: hidden; float: right;}
+.list span { display: block; color: #aaa; font-weight: 700; margin-right: 10px; float: left; }
+.list a:nth-of-type(1) span::after,.list a:nth-of-type(2) span::after { content: ""; display: block; width: 3px; height: 3px; background: #ddd; border-radius: 50%; float: right; margin: 7px 0 0 7px;}
+.list a:nth-of-type(3) span { color: #00506c;}
+.table_borde h3{ color:#007ca7; font-weight: bold; font-size: 16px; padding: 10px 0 15px 5px;}
+
+thead tr { overflow: hidden; width: 100%; clear: both;}
+/*thead tr th { display: block; width: 50%; float: left;}*/
+tbody { overflow: hidden; clear: both;}
+table {  width: 100%; border-collapse: collapse; font-size: 14px; color: #333; table-layout: fixed; border-spacing: 0; line-height: 2em;}
+.table_borde { padding: 10px;}
+
+th { border-collapse: collapse; text-align: center; padding: 14px 0 10px; border: 1px solid #e2e2e2; background: #fbfbfb; box-sizing: border-box;}
+td { border: 1px solid #e2e2e2; border-top: none; padding: 14px 5px 10px;}
+.future { padding:10px;}
+.future h3 { color:#007ca7; font-weight: bold; font-size: 16px; padding: 20px 0 15px 5px;}
+.future p { line-height: 1.5em;}
+.future strong { color: #00506c;}

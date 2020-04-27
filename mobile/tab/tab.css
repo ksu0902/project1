@@ -1,0 +1,81 @@
+/*탭*/
+
+.tabs {
+    position: relative;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.tabs a.tab {
+    display: block;
+    width: 25%;
+    position: absolute;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+    background: #4995cb;
+    padding: 10px 0
+}
+
+.tabs a.tab1 {
+    left: 0;
+    top: 0
+}
+
+.tabs a.tab2 {
+    left: 25%;
+    top: 0
+}
+
+.tabs a.tab3 {
+    left: 50%;
+    top: 0
+}
+
+.tabs a.tab4 {
+    left: 75%;
+    top: 0
+}
+
+.tabs .contlist {
+    margin-top: 50px;
+    display: none;
+    padding: 15px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+}
+
+.tabs .contlist dl dt{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+    padding: 10px 0 5px 10px;
+    
+}
+
+.tabs .contlist dl dd{
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.5em;
+    padding-left: 18px;
+    margin-bottom: 5px;
+}
+
+.tabs .contlist dl dd span{
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.5em;
+    color: #4995cb;
+}
+
+.tabs .contlist dl{
+    margin-bottom: 30px;
+}
+
+.underline_bot{
+    width: 35%;
+    height: 1px;
+    margin: 0 32.5%;
+    background: #78c2e6;
+}

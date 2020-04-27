@@ -1,0 +1,199 @@
+/* 와이드 pc  */
+
+	
+.videoBox{width:100%;height:100%; overflow:hidden; position:absolute}
+#videoBG {
+   position:absolute; /*고정=>fixed/ 스크롤처리=>absolute */
+   left:50%;
+   top:50%; /*오른쪽, 아래에 여백을 두지않고 꽉차게 표시*/
+   width:auto;
+   min-width:100%; /*동영상 너비를 꽉차게*/
+   height:auto;
+   min-height:100%; /*동영상 높이를 꽉차게*/
+  transform:translateX(-50%) translateY(-50%);
+   z-index:-100; /*다른요소보다 아래에 위치*/
+
+  
+}
+
+#imgBG{
+	position:absolute; /*고정=>fixed/ 스크롤처리=>absolute */
+   left:50%;
+   top:50%; /*오른쪽, 아래에 여백을 두지않고 꽉차게 표시*/
+   width:auto;
+   min-width:100%; /*동영상 너비를 꽉차게*/
+   height:auto;
+   min-height:100%; /*동영상 높이를 꽉차게*/
+  transform:translateX(-50%) translateY(-50%);
+   z-index:-100;
+   display:none;
+   
+}
+
+.down {display: block; font-size: 20px; position: absolute; 
+	 left:50%; margin-left: -70px; bottom: 20%;
+	animation:ani 1s infinite  alternate;}
+.down::after{content: "∨"; display: block; text-align: center; font-size: 30px;}
+@keyframes ani {
+	0% { transform:scale(1); opacity:1; color:#fff;}
+	100% { transform:scale(1.2); opacity:0.8; -webkit-column-rule: #888;
+	-moz-column-rule: #ddd;
+	-o-column-rule: #ddd;
+	column-rule: #ddd;}
+}	
+
+#content{ width:100%; font-family: 'Nanum Myeongjo', serif; }
+
+/* collection*/
+.collection_slide { width:96%; margin:0 2%; text-align: center;}
+.collection_slide h2 { 
+ margin: 30px 0; font-size: 50px; padding-top: 110px;}
+.collection_slide p {font-size: 20px;}
+.swiper-container { width: auto; padding-top: 100px; padding-bottom: 50px;}
+.swiper-slide { background-position: center; background-size: cover; width: 414px; height: 584px;}
+
+
+.txt { width:96%; margin:0 2%; text-align: center; padding-top: 300px; opacity: 0; transition: all .5s;}
+.txt span { width: 70%; height: 1px; background: #333; display: block; margin: 0 auto;}
+.txt span:nth-of-type(1) { margin-bottom: 100px;}
+.txt span:nth-of-type(2) { margin-top: 100px; margin-bottom: 200px;}
+.txt h2 { font-size: 80px; margin-bottom: 30px; font-weight: bold;}
+.txt p { font-size: 51px; line-height: 1.5em;}
+
+
+.news { width: 100%; height: 100%; background: url(../images/images/content3_bgx1600.svg)no-repeat; background-size: 100%; overflow: hidden; margin-bottom: 200px; }
+
+.news_left { width: 30%; height: 100%; overflow: hidden;float: left;   perspective:800px}
+.news_left img { width: 70%; padding: 15%; transform:rotateY(0deg); transition:all .5s}
+.news_left:hover img{transform:rotateY(360deg);}
+.news_left h2 { font-size: 50px; color: #fff; padding-left: 40px; padding-bottom: 20px;}
+.news_left p { font-size: 20px; line-height: 1.5em; color: #fff; padding-left: 40px;}
+.news_right { display: block; width: 60%; height: 100%; margin-left: 30%; position: relative;}
+.news_left span { width: 60%; margin: 0 auto; height: 6px; background: #000; display: block; margin-top: 30px;}
+.news_right img { width: 80%; padding:15%;}
+.news_right span { display: block; width: 150px; height: 60px; border: 1px solid #fff; position: absolute; top: 800px; right: 450px; }
+
+
+.perfume { width: 100%; height: 1000px; background: url(../images/images/perfume2.svg)no-repeat;background-position: right; background-size: 50%; margin-bottom: 200px; transition: all .5s;}
+.perfume img { width: 18%; margin-left:1000px; margin-top: 100px; transition: 1s; 
+opacity: 0;}
+
+.perfumetitle_left { float: left; }
+.perfumetitle_left p { font-size: 60px; font-weight: bold; padding: 300px 0 100px 100px; opacity: 0; transition: all .7s;}
+.perfumetitle_left span { display: block; width: 160px; height: 70px; border: 1px solid #000; text-align: center; line-height: 70px; font-size: 20px;
+margin-left: -1000px; opacity:0; transition: .6s;}
+.perfumetitle_left span:hover {background: #000; }
+.perfumetitle_left span a { display: block;transition: .6s;}
+.perfumetitle_left span a:hover { color: #fff;}
+.perfume_list { width:96%; margin:0 2%; text-align: center;overflow: hidden; padding-bottom: 20px; position: relative; margin-bottom: 200px;}
+.perfume_list h2 { text-align: left; font-size: 40px;  margin-left: 50px;}
+
+
+.perfume_list { text-align: center; font-family: 'Roboto', sans-serif; font-size: 18px;}
+.perfume_list h2 { font-family: 'Nanum Myeongjo', serif; margin-bottom: 50px;}
+.perfume_list img { padding: 30px 0; }
+.perfume_list li {margin-bottom: 50px;  position: relative;}
+.perfume_list li dt { font-weight: bolder;}
+.perfume_list li dd { font-size: 14px;}
+.pl2 dd:nth-of-type(1) { font-size: 10px;}
+
+.pl_left {width: 27%; height: 100%; float: left; margin: 0 1%;}
+.pl_center { width: 40%; height: 100%;float: left;  margin: 0 1%;}
+.pl_right {width: 27%;height: 100%;float: right;  margin:0 1%;}
+
+/*컨텐츠 5 (퍼퓸리스트)*/
+.perfume_list ul:nth-of-type(1) li:nth-of-type(1) { width: auto; height :50%; box-shadow: 5px 5px 10px #eee; padding-bottom: 50px;}
+.perfume_list ul:nth-of-type(1) li:nth-of-type(2) { width: auto; height: 50%; box-shadow: 5px 5px 10px #eee; padding-bottom: 50px;}
+.perfume_list ul:nth-of-type(2) li:nth-of-type(1) { width: auto; height: 70%; box-shadow: 5px 5px 10px #eee; padding-bottom: 50px;}
+.perfume_list ul:nth-of-type(2) li:nth-of-type(2) { width: auto; height: 30%; box-shadow: 5px 5px 10px #eee; padding-bottom: 50px;}
+.perfume_list ul:nth-of-type(3) li:nth-of-type(1) { width: auto; height :50%; box-shadow: 5px 5px 10px #eee; padding-bottom: 50px;}
+.perfume_list ul:nth-of-type(3) li:nth-of-type(2) { width: auto; height :50%; box-shadow: 5px 5px 10px #eee;padding-bottom: 50px;}
+
+.perfume_list ul:nth-of-type(1) li:nth-of-type(1) a img { width: 50%;}
+.perfume_list ul:nth-of-type(1) li:nth-of-type(2) a img { width: 40%;}
+.perfume_list ul:nth-of-type(2) li:nth-of-type(1) a img { width: 50%;}
+.perfume_list ul:nth-of-type(2) li:nth-of-type(2) a img { width: 55%;}
+.perfume_list ul:nth-of-type(3) li:nth-of-type(1) a img { width: 45%;}
+.perfume_list ul:nth-of-type(3) li:nth-of-type(2) a img { width: 40.5%;}
+
+/*컨텐츠 5 (퍼퓸 리스트 hover )*/
+.perfume_list li dt { transition: all .5s;}
+.perfume_list li dt:nth-of-type(1):hover {transform: scale(1.1);}
+/* 일반 pc */
+@media screen and (max-width:1280px) {
+    
+    
+    .news_left { width: 40%; height: 100%; }
+    .news_right { width: 50%; height: 100%; margin-left: 40%;}
+    .news_left img { width: 50%; padding: 5%; padding-left: 20%;}
+    .news_left h2 { font-size: 40px; color: #fff; margin-top: 15px;}
+    .news_left p { font-size: 16px; color: #fff }
+    .perfumetitle_left p { font-size: 50px; padding: 200px 0 100px 50px;}
+    .perfume {  height: auto}
+    .perfume img { width: 18%; margin-left:10%;margin-top: 100px; transition: 1s; 
+opacity: 0;}
+}
+
+
+/* 테블릿 */
+@media screen and (max-width:1024px) {
+    .txt {padding-top: 150px;}
+    .txt span:nth-of-type(1) { margin-bottom: 50px;}
+    .txt span:nth-of-type(2) { margin-top: 50px; margin-bottom: 100px;}
+    .news_left h2 { font-size: 30px; color: #000}
+    .news_left img { display: none;}
+    .news_left span { margin-top: 15px;}
+    .perfumetitle_left p { padding: 100px 0 50px 50px; }
+}
+
+/* 소형 테블릿 */
+@media screen and (max-width:768px) {
+    .pl_left { width: 48%; float: left;}
+    .pl_center { width: 48%; float: left;}
+    .pl_right{ width: auto;}
+    .perfume_list ul:nth-of-type(2) li:nth-of-type(1) {  height: 71%;}
+    .perfume_list ul:nth-of-type(2) li:nth-of-type(1) { width: auto; height: 70%; box-shadow: 5px 5px 10px #eee; padding-bottom: 40px;}
+    .perfume_list ul:nth-of-type(2) li:nth-of-type(2) { display: none;}
+    .perfume_list ul:nth-of-type(3) li:nth-of-type(1) { width: 218%; height:50%; box-shadow: 5px 5px 10px #eee; padding-bottom: 50px; margin-left: -180px;}
+    .perfume_list ul:nth-of-type(3) li:nth-of-type(2) { width: 500%; clear: both; float: none; margin-left: -400%; }
+    .perfume_list ul:nth-of-type(3) li:nth-of-type(1) a img { width: 50%; padding-bottom: 30px;}
+    .perfume_list ul:nth-of-type(2) li:nth-of-type(1) a img { width: 52%;}
+    .perfume_list ul:nth-of-type(3) li:nth-of-type(2) a img { width: 30%;}
+    .pl2 dd:nth-of-type(1) {display: none;}
+    .perfumetitle_left p { font-size: 38px;}
+    .perfumetitle_left span { width: 100px; font-size: 16px;}
+    .menuBtn { position: absolute; right: 10% top: 20px; display: block;}
+    .menuBtn span { width: 20px; height: 5px; background: red; display: block;}
+	
+}
+
+/* 모바일 */
+@media screen and (max-width:640px) {
+    .news { width: auto; background: #eee;}
+    .news_left { width: auto; padding: 2%; }
+    .news_right { width: auto; clear: both; width: auto; margin-left: 0; }
+    .news_right img { width: 100%; padding: 0;}
+    .news_left h2 { padding: 0; margin-bottom: 15px;}
+    .news_left p { font-size: 16px; color: #000; padding: 0;}
+    .news_left span { margin-bottom: 15px;}
+    .pl_left { width: auto; float: none;}
+    .pl_center { width: auto; float: none;}
+    .pl_right{ width: auto; float: none;}
+    .perfume_list ul:nth-of-type(3) li:nth-of-type(1) { width: auto; margin-left: 0;}
+    .perfume_list ul:nth-of-type(3) li:nth-of-type(2) { width: auto; clear: both; margin-left: 0; }
+    .perfume_list ul:nth-of-type(3) li:nth-of-type(2) a img { width: 40%;}
+    
+    .perfume { display: none;}
+}
+
+/* 최소 사이즈 처리 */
+@media screen and (max-width:480px){     
+    
+	#wrap { min-width:320px; }
+    .txt h2 { font-size: 38px;}
+    .txt p { font-size: 24px;}
+    
+    
+}
+
+

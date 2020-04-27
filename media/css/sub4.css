@@ -1,0 +1,60 @@
+body { background: #fff;}
+.videoBox{width:100%;height:100%; overflow:hidden; position:absolute;}
+#imgBG{
+   position:fixed; /*고정=>fixed/ 스크롤처리=>absolute */
+   left:50%;
+   top:50%; /*오른쪽, 아래에 여백을 두지않고 꽉차게 표시*/
+   width:auto;
+   min-width:100%; /*동영상 너비를 꽉차게*/
+   height:auto;
+   min-height:100%; /*동영상 높이를 꽉차게*/
+   transform:translateX(-50%) translateY(-50%);
+   z-index:-100;
+   display:none
+}
+.videoBox p { font-weight: bold; font-size: 80px; color: #fff; position: absolute; top:50%; left: 50%; margin-left: -231px;}
+.videoBox p::after { content: ""; width: 60%; height: 4px; background: #fff; position: absolute; top:50px;}
+.videoBox p::before { content: ""; width: 60%; height: 4px; background: #fff; position: absolute; top:50px; left: -61%;}
+.down {display: block; font-size: 20px; position: absolute; left:50%; margin-left: -70px; bottom: 20%;
+	animation:ani 1s infinite  alternate;}
+.down::after{content: "∨"; display: block; text-align: center; font-size: 30px;}
+@keyframes ani {
+	0% { transform:scale(1); opacity:1; color:#fff;}
+	100% { transform:scale(1.2); opacity:0.8; -webkit-column-rule: #888;
+	-moz-column-rule: #ddd;
+	-o-column-rule: #ddd;
+	column-rule: #ddd;}
+}
+
+
+#content{ width:auto; font-family: 'Nanum Myeongjo', serif; background: rgba(255,255,255,.9); text-align: center; overflow: hidden;}
+.row1 { width: auto; padding: 5%; overflow: hidden; }
+strong { font-weight: bold; font-size: 24px; line-height: 1.5em;}
+.row1left { width: 48%; float: left;}
+.row1left img { width: 100%; }
+.row1left p:nth-of-type(1) {padding: 20px 0; font-size: 20px;}
+.row1left p:nth-of-type(2) {padding-bottom: 20px;}
+
+.row1right { width: 48%; float: right;}
+.row1right img { width: 100%}
+.row1right p:nth-of-type(1) {padding: 20px 0; font-size: 20px;}
+.row1right p:nth-of-type(2) {padding-bottom: 20px;}
+
+
+.row2 { width: auto; padding: 2%}
+.row2 img { }
+
+@media screen and (max-width:1024px) {
+    
+
+}
+
+@media screen and (max-width:768px) {
+
+.row1left {float: none; width: auto;}
+.row1right {float: none; width: auto;}
+}
+
+@media screen and (max-width:640px){
+.row2images img { width:auto;}
+}

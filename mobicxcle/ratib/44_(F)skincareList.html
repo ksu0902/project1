@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skin care List</title>
+    <style>
+         * { margin: 0; padding: 0;}
+        html, body { width: 100%; height: 100%; background-color: #f6f5e9;  font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;}
+        #wrapper { width: 100%; height: 2100px; position: relative; top:1050px; left: 50%; transform: translate(-50%,-50%);}
+        .wrapper { width: 100%; height: 100%; position: relative;}
+        header { width: 1200px; height: 200px; position: relative; top:100px; left: 50%; transform: translate(-50%,-50%); 
+                 }
+        .logoIcon { position: absolute; top: 35px; left: 50%; margin-left: -65px; }
+        .shoppingCartIcon { position: absolute; top: 80px; left: 90%; margin-left:-38px;}
+        .ProfileIcon { position: absolute; top: 80px; left: 100%; margin-left:-76px;}
+         /*----------------------------------------네비게이션---------------------------------------------*/
+        ul,li { font-family: 'Vollkorn', serif; font-weight: 200;}
+        .menu-1 { text-align: center; position: relative; top:0px; z-index: 7}
+        .menu-1 > ul { display:inline-block; width: 100%; height: 60px; line-height: 60px; border-top:1px solid #444; 
+                        border-bottom: 1px solid #000; box-sizing: border-box;} /*--nav--*/
+        .menu-1 > ul >li { display: inline-block; width: 250px; font-size: 1.2rem; } /*--메인 메뉴--*/
+        .menu-1 > ul >li >a { display: block; text-decoration: none; color: inherit;  transition: .5s;} /*--메인A태그 메뉴--*/
+        .menu-1 > ul >li >a:after { content: ""; width: 0; height: 3; background-color: inherit; position: absolute;
+                                    top: 45px; left: 50px; transition: .5s;}
+/*
+        .menu-1 > ul >li:hover >a { background-color: #dbdace; height: 58px; width: 250px; display: block; 
+                                    border-radius: 30px 0 30px 0;} --메인 호버--
+*/
+        .menu-1 > ul >li >a:hover::after { content: ""; width: 150px; height: 3px; background-color: #ccc4be; position: absolute;
+                                    top: 45px; left: 50px;}
+        .menu-1 li { position: relative; }
+        .menu-1 li li { position: relative; border: 1px solid #444; margin-top:10px; list-style: none; font-size: .9rem; bottom: 0;
+                        font-weight: 200; height: 40px; line-height: 40px; border-radius: 20px; transition: .5s; background-color: inherit;} /*--서브 메뉴 객체--*/
+       
+        .menu-1 li li:hover { height: 180%; top:200%; background-color: #8e8a66; color: white} /*--서브 메뉴 호버--*/
+        .menu-1 li li >a { display: block; text-decoration: none; color: inherit; }/*--서브 메뉴 A태그.--*/
+        .menu-1 ul ul { display: none; position: absolute; }  /*--서브 메뉴 전체.--*/
+        
+        .menu-1 li:hover > ul { display: block; text-align: center; width: 250px;}  /*--메인 호버하면 ul이 나타나는것.--*/
+         /*-----------------------------------------------------------------------------------------*/
+        
+        .basiccare { position: absolute; left: 79%; top: 400px; z-index: 6; font-weight: 600; font-size: 1.5rem;}
+        
+        @keyframes backAni {from{transform: rotate(0deg);} to{transform: rotate(360deg);}}
+        .anibackground { background: url(../imgs/backgroundAni.png)no-repeat; background-size: 100%; position: absolute; top: 450px; 
+                         left: 50%; margin-left: -600px; z-index: 1; transform-origin: 50% 50%; width: 1150px; height: 1200px;
+        
+                         animation-name: backAni;  animation-duration: 40s; animation-timing-function: linear;
+                         animation-iteration-count: infinite;}
+        
+        
+        nav { width: 1200px; height: 1200px; position: relative; float: left; top:170px; left: 50%; 
+              margin-left: -600px;}
+        nav > div { float: left; margin: 20px; position: relative; left: 100px; top: 90px; border: 5px solid #fff; 
+                    box-sizing: border-box; border-radius: 50px; cursor: pointer;}
+        .pd1,.pd2,.pd3,.pd4 { width: 470px; height: 570px; z-index: 8; background-color:rgba(254,253,242,0.5); overflow: hidden;}
+        .pd1 img { position: absolute; top:45px; left:50%; margin-left: -85px;}
+        .pd2 img { position: absolute; top: 160px; left:50%; margin-left: -190px;}
+        .pd3 img { position: absolute; top: 120px; left:50%; margin-left: -170px;}
+        .pd4 img { position: absolute; top: 90px; left:50%; margin-left: -125px;}
+        nav div > img { position: absolute; top:50%; left: 50%; margin-left: -155px; transition: .5s;}
+        .pd1 img:hover,.pd2 img:hover,.pd3 img:hover,.pd4 img:hover{ transform: scale(1.1) }
+        div span { width: 100%; height: 120px; background-color: rgba(255,255,255,.7); position: absolute; top:500px; left: 50%; 
+                   transform: translate(-50%,-50%); display: inline-block; }
+        h3 { text-align: center; position: absolute; top:30px; left: 50%; transform: translate(-50%,-50%);}
+        span div { width: 80px; height: 4px; background-color: #ccc; position: absolute; top:50px; left: 50%; 
+                   transform: translate(-50%,-50%); }
+        span p { text-align: center; position: absolute; top: 80px; left: 50%; transform: translate(-50%,-50%); color: #333; font-weight: 600; }
+        /*-----------------------------------------------------------------------------------------*/
+        .loadBtn {width: 100px; height: 100px; z-index: 3; position:relative; top: 450px; left: 50%; transform: translate(-50%,-50%);
+                    transition: .5s;}
+        .loadBtn:hover { top: 430px;}
+        
+        /*-------------------------------------------푸터----------------------------------------------*/
+        #wrapper2 { width: 100%; height: 550px;position: relative;}
+        .footerBg { width: 100%; height: 550px; position: absolute; top:20px opacity: .8;
+       }
+        footer { width: 1200px; height: 470px; position: absolute; left: 50%; top: 310px; 
+                 transform: translate(-50%,-50%);}
+        /*--------------------------------------------푸터 왼 쪽----------------------------------------*/
+        .footer_left_area { width: 600px; height: 470px; position: relative; float: left; top:0px;
+                            font-family: 'Apple SD Gothic NEO',sans-serif!important; }
+        .footer_left_area > h1 { font-weight: 900; font-size: 2.5rem; position: absolute; top: 100px; left: 20px;
+                                 font-family: 'Apple SD Gothic NEO',sans-serif!important;}
+        .footer_left_area > span { width: 90px; height: 5px; background-color: #000; position: absolute; 
+                                   left: 65px; top:90px;}
+        .open_time { position: absolute; font-size: .8rem; font-weight: 700; color: #666; top: 160px; left: 20px;}
+        .thin_row1 { position: absolute; top: 210px; left: 20px; width: 500px; height: 2px; 
+                     background-color: #000;}
+        .insIcon { position: relative; top: 220px; left: 10px; margin: 10px; transition: .3s;}
+        .insIcon:hover { position: relative; top: 210px; }
+        .thin_row2 { position: absolute; top: 300px; left: 20px; width: 500px; height: 2px; background-color: #000;}
+        .domain { position: absolute; top:330px; left: 20px; font-size: .8rem; font-weight: 700; color: #fff;}
+        /*--------------------------------------------푸터 오른쪽----------------------------------------*/
+        .footer_right_area { width: 600px; height: 470px; float: left; position: relative; top:0px;}
+        .category { font-size: 1.2rem; font-weight: 600; color: #444; float: left; margin-right: 60px; 
+                    position: relative; top: 90px;}
+        .sur_ { position: absolute; font-size: .7rem; font-weight: 700; color: #666; line-height: 20px; 
+                width: 100px; top: 120px;}
+        .category5 { left: 0px; top: 100px;  width: 100px;}
+        .category6 { left: 115px;}
+        .category7 { left: 240px;}
+        .subcri { font-size: 1.3rem; font-weight: 700; position: absolute; top: 220px;}
+        input[type="text"] { width: 200px; height: 20px; border: 1px solid #fff; background-color: inherit;                              position: absolute; top:310px; left: 0; color: #fff; font-weight: 700; padding: 5px;}
+        .subcri_btn { width: 100px; height: 30px; background-color: #fff; line-height: 32px; position: absolute;                 top:310px; left: 260px; text-align: center; font-weight: 700; }
+        .subcri_btn:hover { background-color: #000; color: orangered;}
+        
+/*        .pd1 h3::after {content: ''; display: block; position: absolute; top:50%; left: 0; margin-top:-50px; width:100%; height: 130px; background-color: beige; transition: all .5s; opacity: 0.5; }*/
+    </style>
+</head>
+<body>
+   
+    <div id="wrapper">
+        
+        <header>
+            <a href="100_mainLayout.html"><img src="../imgs/brand_logo_not_BG.png" width="130px" class="logoIcon"></a>
+            <a href="46_(F)shoppingCart(1).html"><img src="../imgs/basket.svg" width="38px" class="shoppingCartIcon"></a>
+            <a href="77_mypage.html"><img src="../imgs/profile.svg" width="38px" class="ProfileIcon"></a>
+        </header>
+        <section class="menu-1">
+                <ul>
+                    <li><a href="">Ratib</a>
+                        <ul>
+                            <li><a href="50_aboutus.html">About Us</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li><a href="">Product</a>
+                        <ul>
+                            <li><a href="42_(F)DetoxJuiceList.html">Detox juice</a></li>
+                            <li><a href="43_(F)PowderList.html">1 day Powder</a></li> 
+                            <li><a href="44_(F)skincareList.html">Skin care</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Community</a>
+                        <ul>
+                            <li><a href="48_notice.html">Notice</a></li>
+                            <li><a href="48_3_qna.html">Q &amp; a</a></li> 
+                            <li><a href="48_2_review.html">Review</a></li>
+                        </ul>
+                    </li>
+                </ul>
+        </section>
+        
+        <h1 class="basiccare">&lowast;Skin care<div></div></h1>
+          
+          <nav>
+           <div class="pd1" onclick="location.href='11_1_skin1.html'">
+              <img src = "../imgs/skin-care1.png" width="170px">
+               <span>
+                   <h3>Recharging Moisturizer</h3>
+                   <div class="row"></div>
+                   <p>280ml<br>$59.00</p>
+               </span>
+           </div>
+           
+           <div class="pd2" onclick="location.href='11_2_skin2.html'">
+              <img src = "../imgs/skin-care2.png" width="380px">
+               <span>
+                   <h3>Body Detoxifier</h3>
+                   <div class="row"></div>
+                   <p>142g<br>$29.00</p>
+               </span>
+           </div>
+           
+           <div class="pd3" onclick="location.href='11_3_skin3.html'">
+              <img src = "../imgs/skin-care5.png" width="340px">
+               <span>
+                   <h3>Mini Face Trio</h3>
+                   <div class="row"></div>
+                   <p>15ml / 15ml / 15ml<br>$19.00</p>
+               </span>
+           </div>
+           
+           <div class="pd4" onclick="location.href='11_4_skin4.html'">
+              <img src = "../imgs/skin-care3.png" width="250px">
+               <span>
+                   <h3>Vitamin Oil</h3>
+                   <div class="row"></div>
+                   <p>150ml<br>$25.00</p>
+               </span>
+          </div> 
+            
+          
+        </nav>
+        <div class="loadBtn"><a href="#"><img src="../btnIcon/loadbtn.svg" width="100px"></a></div>  
+        <div class="anibackground"></div> 
+
+    </div>
+    
+    
+    <div id="wrapper2" class="wrapper">
+       <img src="../imgs/footer.png" class="footerBg">
+        <footer>
+            <div class="footer_left_area">
+                    <span class="h1row"></span>
+                    <h1 class="tel">070-4133-9999</h1>
+                    <p class="open_time">
+                    AM 10:00 ~ PM 05:00 Off-time PM 12:00 ~ PM 02:00 <br>
+                    DAY OFF (SATURDAY. SUNDAY, HOLIDAY)
+                    </p>
+                    <div class="thin_row1"></div>
+                    <a href="#"><img src="../btnIcon/instagram_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="../btnIcon/facebook_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="../btnIcon/twitter_btn.svg" width="48px" class="insIcon"></a>
+                    <div class="thin_row2"></div>
+                    <p class="domain">
+                    사업자명 (주)네이키드베지터블스 ㅣ 대표이사 윤예린 ㅣ 사업자등록번호 356-81-01648<br>
+                    대표전화 070-4133-9999 ㅣ 통신판매업신고번호 제 2019-성남분당B-0439 호<br>
+                    주소 서울특별시 서초구 강남대로 39길 6-7, 154 개인정보보안책임자 윤예린 070-4133-9999 ㅣ<br>
+                    copyright (c) All Right Reserved Hosting by wook</p>
+            </div>
+            <div class="footer_right_area">
+                    <p class="category">Ratib&nbsp;&nbsp;</p>   
+                    <p class="category">Product</p>   
+                    <p class="category">Community</p>   
+                    <p class="category">Mypage</p><br>
+                    <p class="sur_ category5"><br>about us</p>  
+                    <p class="sur_ category6">Detox Juice<br>1 Day powder<br>Skin care</p>  
+                    <p class="sur_ category7">Notice<br>QnA<br>Review</p> 
+                    <p class="subcri">
+                    Join our newsletter and keep up to date<br>
+                    with the latest products, special offers from RATIB.
+                    </p>
+                    <input type="text" placeholder="Enter E-mail">
+                    <div class="subcri_btn">Subcribe</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

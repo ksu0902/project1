@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>notice</title>
+    <style>
+         * { margin: 0; padding: 0;}
+        html, body { width: 100%; height: 100%; background-color: #f6f5e9;  font-family: 'Apple SD Gothic NEO',sans-serif!important;}
+        #wrapper { width: 100%; height: 1500px; position: relative; top:750px; left: 50%; transform: translate(-50%,-50%);}
+        header { width: 1200px; height: 200px; position: relative; top:100px; left: 50%; transform: translate(-50%,-50%); 
+                 }
+        .logoIcon { position: absolute; top: 35px; left: 50%; margin-left: -65px; }
+        .shoppingCartIcon { position: absolute; top: 80px; left: 90%; margin-left:-38px;}
+        .ProfileIcon { position: absolute; top: 80px; left: 100%; margin-left:-76px;}
+         /*----------------------------------------네비게이션---------------------------------------------*/
+        ul,li { font-family: 'Vollkorn', serif; font-weight: 200;}
+        a { text-decoration: none; color: inherit;}
+        .menu-1 { text-align: center; position: relative; top:0px; z-index: 7}
+        .menu-1 > ul { display:inline-block; width: 100%; height: 60px; line-height: 60px; border-top:1px solid #444; 
+                        border-bottom: 1px solid #000; box-sizing: border-box;} /*--nav--*/
+        .menu-1 > ul >li { display: inline-block; width: 250px; font-size: 1.2rem; } /*--메인 메뉴--*/
+        .menu-1 > ul >li >a { display: block; text-decoration: none; color: inherit;  transition: .5s;} /*--메인A태그 메뉴--*/
+        .menu-1 > ul >li >a:after { content: ""; width: 0; height: 3; background-color: inherit; position: absolute;
+                                    top: 45px; left: 50px; transition: .5s;}
+/*
+        .menu-1 > ul >li:hover >a { background-color: #dbdace; height: 58px; width: 250px; display: block; 
+                                    border-radius: 30px 0 30px 0;} --메인 호버--
+*/
+        .menu-1 > ul >li >a:hover::after { content: ""; width: 150px; height: 3px; background-color: #ccc4be; position: absolute;
+                                    top: 45px; left: 50px;}
+        .menu-1 li { position: relative; }
+        .menu-1 li li { position: relative; border: 1px solid #444; margin-top:10px; list-style: none; font-size: .9rem; bottom: 0;
+                        font-weight: 200; height: 40px; line-height: 40px; border-radius: 20px; transition: .5s; background-color: inherit;} /*--서브 메뉴 객체--*/
+       
+        .menu-1 li li:hover { height: 180%; top:200%; background-color: #8e8a66; color: white} /*--서브 메뉴 호버--*/
+        .menu-1 li li >a { display: block; text-decoration: none; color: inherit; }/*--서브 메뉴 A태그.--*/
+        .menu-1 ul ul { display: none; position: absolute; }  /*--서브 메뉴 전체.--*/
+        
+        .menu-1 li:hover > ul { display: block; text-align: center; width: 250px;}  /*--메인 호버하면 ul이 나타나는것.--*/
+        
+        
+      /*-------------span----------*/
+        .caca { width: 300px; height: 80px;  position: relative; left: 50%; top:300px;
+                transform: translate(-50%,-50%);}
+        .cat { width: 80px; height: 30px; display: block; line-height: 30px; text-align: center; 
+              font-size: 1.2rem; font-weight: 700; float: left; position: absolute; transition: .8s;}
+       
+        #not:hover,#qna:hover,#rev:hover {}
+/*
+        #not:hover::after{ content: ""; width: 0px; height: 2px; background-color: aqua; position: absolute;
+                           left: 0;}
+*/
+        #not:hover::before,#qna:hover::before,#rev:hover::before { content: ""; width: 100%; height: 4px; background-color: olive;position: absolute;
+                           left: 0; top:100%;}
+        #qna { position: absolute; left: 50%; transform: translate(-50%,-50%); top:14px; color: #555; }
+        
+        #rev { position: absolute; left: 218px; color: #555;}
+      /*---------------------------------------nav------------------------------------------------*/
+
+        nav { width: 1200px; height: 1200px; background-color: #ecebdd; position: relative; top: 900px; left: 50%; 
+             transform: translate(-50%,-50%); }
+        .titlejul { width: 1200px; height: 70px; border-bottom: 1px solid #ccc; color: #666;
+                    border-top: 1px solid #000; box-sizing: border-box; text-align: center; line-height: 70px; font-size: 0.8rem;
+                    }
+        .titlejul2 { width: 1200px; height: 70px; border-bottom: 1px solid #ccc; color: #444;
+                     box-sizing: border-box; text-align: center; line-height: 70px; font-size: 0.8rem;
+                    }
+        .titlejul3 { width: 1200px; height: 70px; border-bottom: 1px solid #000; color: #444;
+                     box-sizing: border-box; text-align: center; line-height: 70px; font-size: 0.8rem;
+                    }
+        .t1{ width: 90px; height: 70px;}
+        .t2{ width: 100px; height: 70px; position: relative; left: 90px; top:-70px;}
+        .t3{ width: 730px; height: 70px; position: relative; left: 190px; top: -140px;}
+        .t4{ width: 100px; height: 70px; position: relative; left: 920px; top: -210px;}
+        .t5{ width: 100px; height: 70px; position: relative; left: 1020px; top: -280px;}
+        .t6{ width: 80px; height: 70px; position: relative; left: 1120px; top: -350px;}
+        .t11{ width: 90px; height: 70px;}
+        .t22{ width: 100px; height: 60px; position: relative; left: 90px; top:-70px;margin-top: 5px;    }
+        .t33{ width: 730px; height: 70px; position: relative; left: 190px; top: -140px; text-align: left; line-height: 80px;}
+        .t44{ width: 100px; height: 70px; position: relative; left: 920px; top: -210px; line-height: 80px;}
+        .t55{ width: 100px; height: 70px; position: relative; left: 1020px; top: -280px; line-height: 80px;}
+        .t66{ width: 80px; height: 70px; position: relative; left: 1120px; top: -350px;line-height: 80px;}
+        .backgroundimg { background: url(../imgs/ngng.png)no-repeat; width: 100%; height: 860px; position: absolute; top:116px; z-index: -1; opacity: .3;}
+        .numberrow { width: 100%; height: 50px;}
+        .numberrow > p { float: left; position: relative; top:50%; left: 50%; transform: translate(-50%,-50%);
+                        display: inline-block; width: 20px; font-weight: 800;}
+        .numberrow > span:nth-of-type(1)::after {content: "<"; position: relative; left: 39%;top:30%;}
+        .numberrow > span:nth-of-type(2)::after {content: ">";position: relative; left: 48%;top:30%;    }
+      /*-------------------------------------------푸터----------------------------------------------*/
+        #wrapper2 { width: 100%; height: 550px;position: relative; top:400px;}
+        .footerBg { width: 100%; height: 550px; position: absolute; top:20px opacity: .8;
+       }
+        footer { width: 1200px; height: 470px; position: absolute; left: 50%; top: 310px; 
+                 transform: translate(-50%,-50%);}
+        /*--------------------------------------------푸터 왼 쪽----------------------------------------*/
+        .footer_left_area { width: 600px; height: 470px; position: relative; float: left; top:0px;
+                            font-family: 'Apple SD Gothic NEO',sans-serif!important; }
+        .footer_left_area > h1 { font-weight: 900; font-size: 2.5rem; position: absolute; top: 100px; left: 20px;
+                                 font-family: 'Apple SD Gothic NEO',sans-serif!important;}
+        .footer_left_area > span { width: 90px; height: 5px; background-color: #000; position: absolute; 
+                                   left: 20px; top:90px;}
+        .open_time { position: absolute; font-size: .8rem; font-weight: 700; color: #666; top: 160px; left: 20px;}
+        .thin_row1 { position: absolute; top: 210px; left: 20px; width: 500px; height: 2px; 
+                     background-color: #000;}
+        .insIcon { position: relative; top: 220px; left: 10px; margin: 10px; transition: .3s;}
+        .insIcon:hover { position: relative; top: 210px; }
+        .thin_row2 { position: absolute; top: 300px; left: 20px; width: 500px; height: 2px; background-color: #000;}
+        .domain { position: absolute; top:330px; left: 20px; font-size: .8rem; font-weight: 700; color: #fff;}
+        /*--------------------------------------------푸터 오른쪽----------------------------------------*/
+        .footer_right_area { width: 600px; height: 470px; float: left; position: relative; top:0px;}
+        .category { font-size: 1.2rem; font-weight: 600; color: #444; float: left; margin-right: 60px; 
+                    position: relative; top: 90px;}
+        .sur_ { position: absolute; font-size: .7rem; font-weight: 700; color: #666; line-height: 20px; 
+                width: 100px; top: 120px;}
+        .category5 { left: 0px; top: 100px;  width: 100px;}
+        .category6 { left: 115px;}
+        .category7 { left: 240px;}
+        .subcri { font-size: 1.3rem; font-weight: 700; position: absolute; top: 220px;}
+        .emailrow { width: 200px; height: 20px; border: 1px solid #fff; background-color: inherit;                              position: absolute; top:310px; left: 0; color: #fff; font-weight: 700; padding: 5px;}
+        .subcri_btn { width: 100px; height: 30px; background-color: #fff; line-height: 32px; position: absolute;                 top:310px; left: 260px; text-align: center; font-weight: 700; }
+        .subcri_btn:hover { background-color: #000; color: orangered;}
+    </style>
+</head>
+<body>
+   
+    <div id="wrapper">
+        
+        <header>
+            <a href="100_mainLayout.html"><img src="../imgs/brand_logo_not_BG.png" width="130px" class="logoIcon"></a>
+            <a href="46_(F)shoppingCart(1).html"><img src="../imgs/basket.svg" width="38px" class="shoppingCartIcon"></a>
+            <a href="77_mypage.html"><img src="../imgs/profile.svg" width="38px" class="ProfileIcon"></a>
+        </header>
+        <section class="menu-1">
+                <ul>
+                    <li><a href="">Ratib</a>
+                        <ul>
+                            <li><a href="50_aboutus.html">About Us</a></li>
+                    
+                        </ul>
+                    </li>
+                    <li><a href="">Product</a>
+                        <ul>
+                            <li><a href="42_(F)DetoxJuiceList.html">Detox juice</a></li>
+                            <li><a href="43_(F)PowderList.html">1 day Powder</a></li> 
+                            <li><a href="44_(F)skincareList.html">Skin care</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Community</a>
+                        <ul>
+                            <li><a href="48_notice.html">Notice</a></li>
+                            <li><a href="48_3_qna.html">Q &amp; a</a></li> 
+                            <li><a href="48_2_review.html">Review</a></li>
+                        </ul>
+                    </li>
+                </ul>
+        </section>
+           
+           <div class="caca">
+               <a href="48_notice.html"><span class="cat" id="not">NOTICE</span></a> 
+               <a href="48_3_qna.html"><span class="cat" id="qna">Q &amp; A</span></a> 
+               <a href="48_2_review.html"><span class="cat" id="rev">REVIEW</span></a>
+           </div>
+        <nav>
+            <div class="titlejul">
+            <div class="t1">no</div>
+            <div class="t2">Product</div>
+            <div class="t3">Subject</div>
+            <div class="t4">Name</div>
+            <div class="t5">Date</div>
+            <div class="t6">Hit</div>
+            
+            </div>
+            <div class="titlejul2">
+            <div class="t11">999999</div><!--넘버-->
+            <div class="t22"><img src="../toto/abc.png" width="37px"></div><!--프로덕트 이미지-->
+            <div class="t33">나 문희합니다~</div><!--제목-->
+            <div class="t44">김성욱이북이</div><!--이름-->
+            <div class="t55">2020.01.13</div><!--날짜-->
+            <div class="t66">99999</div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul2">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            
+            <div class="titlejul3">
+            <div class="t11"></div><!--넘버-->
+            <div class="t22"></div><!--프로덕트 이미지-->
+            <div class="t33"></div><!--제목-->
+            <div class="t44"></div><!--이름-->
+            <div class="t55"></div><!--날짜-->
+            <div class="t66"></div><!--본횟수-->
+            
+            </div>
+            <div class="numberrow">
+                <span></span>
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <span></span>
+            </div>
+            
+            <div class ="backgroundimg"></div>
+            
+            
+        </nav>
+        
+
+        <section>
+            <a href="" class="ggul"></a>글쓰기 아이콘
+        </section>
+        
+        <div class="set">
+            <a href=""><div class="jaja"></div></a>
+            <a href=""><div class="page">1</div></a>
+            <a href=""><div class="page">2</div></a>
+            <a href=""><div class="page">3</div></a>
+            <a href=""><div class="page">4</div></a>
+            <a href=""><div class="page">5</div></a>
+            <a href=""><div class="ohoh"></div></a>
+        </div>
+        
+        <div class="gum">
+            <div class="gum1"><div>검색어</div></div>
+            <div class="weekly">
+                <select id="search_date" name="search_date">
+                 <option value="week">일주일</option>
+                 <option value="month">한달</option>
+                 <option value="month3">세달</option>
+                 <option value="all">전체</option>
+                </select>
+            </div>
+             <div class="key">
+                <select id="search_key" name="search_key">
+                 <option value="subject">제목</option>
+                 <option value="content">내용</option>
+                 <option value="writer_name">이름</option>
+                 <option value="member_id">아이디</option>
+                 
+                </select>
+            </div>
+            
+
+        
+
+            <div class="ser"><input type="search" id="ssearch" placeholder></div>
+           
+ 
+        </div>
+
+    
+  </div>
+  
+   <div id="wrapper2" class="wrapper">
+       <img src="../imgs/footer.png" class="footerBg">
+        <footer>
+            <div class="footer_left_area">
+                    <span class="h1row"></span>
+                    <h1 class="tel">070-4133-9999</h1>
+                    <p class="open_time">
+                    AM 10:00 ~ PM 05:00 Off-time PM 12:00 ~ PM 02:00 <br>
+                    DAY OFF (SATURDAY. SUNDAY, HOLIDAY)
+                    </p>
+                    <div class="thin_row1"></div>
+                    <a href="#"><img src="../btnIcon/instagram_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="../btnIcon/facebook_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="../btnIcon/twitter_btn.svg" width="48px" class="insIcon"></a>
+                    <div class="thin_row2"></div>
+                    <p class="domain">
+                    사업자명 (주)네이키드베지터블스 ㅣ 대표이사 윤예린 ㅣ 사업자등록번호 356-81-01648<br>
+                    대표전화 070-4133-9999 ㅣ 통신판매업신고번호 제 2019-성남분당B-0439 호<br>
+                    주소 서울특별시 서초구 강남대로 39길 6-7, 154 개인정보보안책임자 윤예린 070-4133-9999 ㅣ<br>
+                    copyright (c) All Right Reserved Hosting by wook</p>
+            </div>
+            <div class="footer_right_area">
+                    <p class="category">Ratib&nbsp;&nbsp;</p>   
+                    <p class="category">Product</p>   
+                    <p class="category">Community</p>   
+                    <p class="category">Mypage</p><br>
+                    <p class="sur_ category5"><br>about us</p>  
+                    <p class="sur_ category6">Detox Juice<br>1 Day powder<br>Skin care</p>  
+                    <p class="sur_ category7">Notice<br>QnA<br>Review</p> 
+                    <p class="subcri">
+                    Join our newsletter and keep up to date<br>
+                    with the latest products, special offers from RATIB.
+                    </p>
+                    <input type="text" placeholder="Enter E-mail" class="emailrow">
+                    <div class="subcri_btn">Subcribe</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

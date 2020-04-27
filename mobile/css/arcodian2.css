@@ -1,0 +1,3 @@
+.dropdown_content span .icon-chevron-down { float:right; transition:all .25s ease; } 
+.dropdown_content span.open i.icon-chevron-down { -webkit-transform: rotate(180deg); transform: rotate(180deg); }
+

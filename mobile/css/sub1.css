@@ -1,0 +1,23 @@
+.subvisual {clear:both;}
+.subvisual img { width: 100%;}
+#content { clear: both; overflow: hidden;}
+#content h3 { font-weight: bold; font-size: 20px; color: #777; padding: 15px 20px 20px 15px;}
+#content h3::before { content: ""; width: 9px; height: 22px; background: #0090C2; display: block; float: left; margin-right: 5px;}
+.list { padding: 20px 10px 20px 20px; overflow: hidden; float: right;}
+.list span { display: block; color: #aaa; font-weight: 700; margin-right: 10px; float: left; }
+.list a:nth-of-type(1) span::after,.list a:nth-of-type(2) span::after { content: ""; display: block; width: 3px; height: 3px; background: #ddd; border-radius: 50%; float: right; margin: 7px 0 0 7px;}
+.list a:nth-of-type(3) span { color: #00506c;}
+
+
+.con1 { overflow: hidden; clear: both;}
+.product_list ul { overflow: hidden; padding: 5px;}
+.product_list li { width: 50%; display: block; float: left;}
+.product_list dl { display: block; border-bottom: 3px solid #eee;
+; box-sizing: border-box; height: 190px; margin: 5px 5px 15px 5px;}
+.product_list dl dd { text-align: center;  line-height: 1.5em; }
+.product_list dl a dt img { width: 86px; height: 94px; display: block; margin: 0 auto;}
+.product_list dl dd:nth-of-type(1) { color: #00395d; font-weight: bold; font-size: 16px; }
+.product_list dl dd:nth-of-type(2),.product_list dl dd:nth-of-type(3) { color: #666; font-weight: 600;}
+.num ul { clear: both; overflow: hidden;}
+.num li{ float: left; margin-left: 50%;}
+

@@ -1,0 +1,44 @@
+/* CSS Document */
+.visual{clear: both}
+
+.con1 div { position: relative; overflow: hidden;
+    border-radius: 10px; margin: 10px 15px;
+  overflow: hidden}
+.con1 h3 { color: #737373; font-weight: 600; font-size: 16px; display: block; padding: 20px 0 0 16px; overflow: hidden;}
+.con1 span { display: block; width: 4px; height: 4px; background: #01a0ca; float: left; margin-top: 8px; margin-right: 8px;}
+.con1 a { color: #737373; font-weight: 600; font-size: 16px; display: block; }
+.con1 .serchbox { display: block; border: none; border-bottom: 3px solid #01a0ca; width: 75%; margin:5px 0 5px 15px; float: left; font-size: 24px; color: #333; }
+.con1 .serchbtn { display: block; background: #fff;  height: 40px;float: right; border:none; color:#777; font-weight: bold; padding: 0 10px}
+/*-컨텐츠2 시작-*/
+.con2 { overflow: hidden; padding-bottom: 16px; margin: 0 1%}
+.con2 p { color: #737373; font-size: 16px; font-weight: 600; padding: 16px;}
+.con2 ul{overflow: hidden}
+.con2 ul li{width: 48%; margin: 0 1%; float: left; border-bottom: 3px solid #ddd; box-sizing: border-box}
+.con2 ul li img{width: 100%}
+.con2 ul li dd{margin: 10px 0; text-align: center; line-height: 1.5em}
+.con2 ul li dd:nth-of-type(2){color: #013b53; font-weight: bold}
+
+
+/*-컨텐츠3 title-*/
+.conBox { overflow: hidden; position: relative; margin-bottom: 20px}
+.conBox h3 {color: #737373; font-weight: 600; font-size: 16px;  padding: 20px 0 0 16px; overflow: hidden;margin-bottom: 10px;}
+.conBox h3>span:nth-of-type(1) { display: block; width: 4px; height: 4px; background: #01a0ca; float: left; margin-top: 8px; margin-right: 8px;}
+.conBox h3 a { color: #666; font-weight: 700; }
+.conBox h3 a span{ color: #01a0ca; font-weight: 700; margin-left: 10px }
+.conBox .more{position: absolute; right: 10px; top:15px}
+
+
+.con4 ul{margin: 0 15px}
+.con4 li{line-height: 2em}
+.con4 li a:hover{color: #01a0ca}
+
+.con5 dl{overflow: hidden; margin:0 15px 15px}
+.con5 dt{float: left; width: 45%;}
+.con5 dt img{width: 100%}
+.con5 dd{float: right; width: 53%; line-height: 1.5em}
+
+.swiper-wrapper p { text-align: center; font-weight: bold; color: #054d6b;}
+
+
+
+

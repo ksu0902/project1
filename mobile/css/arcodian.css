@@ -1,0 +1,11 @@
+ *{margin:0; padding:0;}
+  a{color:#000; text-decoration:none}
+
+   #menu1{width:200px; padding:10px; border:1px solid #666;background-color: #999;}
+   .menus{padding:5px; font-weight:bold; background-color: #ddd;
+           border-bottom: 1px solid #fff; cursor:pointer;}
+   .menuitems{display:none;}
+   div ul li a{display:block; border-bottom: 1px solid #fff; text-decoration: none; background: #666;
+          color: #fff;padding:10px; font-weight:bold;}
+   .menuitems a:hover {background: #000;}
+   

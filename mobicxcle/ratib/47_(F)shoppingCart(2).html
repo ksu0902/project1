@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shopping Cart 2</title>
+    <style>
+         * { margin: 0; padding: 0;}
+        html, body { width: 100%; height: 100%; background-color: #f6f5e9;  font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;}
+        #wrapper { width: 100%; height: 1500px; position: relative; top:750px; left: 50%; transform: translate(-50%,-50%);}
+        header { width: 1200px; height: 200px; position: relative; top:100px; left: 50%; transform: translate(-50%,-50%);}
+        .logoIcon { position: absolute; top: 35px; left: 50%; margin-left: -65px; }
+        .shoppingCartIcon { position: absolute; top: 80px; left: 90%; margin-left:-38px;}
+        .ProfileIcon { position: absolute; top: 80px; left: 100%; margin-left:-76px;}
+         /*----------------------------------------네비게이션---------------------------------------------*/
+        ul,li { font-family: 'Vollkorn', serif; font-weight: 200;}
+        .menu-1 { text-align: center; position: relative; top:0px; z-index: 7}
+        .menu-1 > ul { display:inline-block; width: 100%; height: 60px; line-height: 60px; border-top:1px solid #444; 
+                        border-bottom: 1px solid #000; box-sizing: border-box;} /*--nav--*/
+        .menu-1 > ul >li { display: inline-block; width: 250px; font-size: 1.2rem; } /*--메인 메뉴--*/
+        .menu-1 > ul >li >a { display: block; text-decoration: none; color: inherit;  transition: .5s;} /*--메인A태그 메뉴--*/
+        .menu-1 > ul >li >a:after { content: ""; width: 0; height: 3; background-color: inherit; position: absolute;
+                                    top: 45px; left: 50px; transition: .5s;}
+/*
+        .menu-1 > ul >li:hover >a { background-color: #dbdace; height: 58px; width: 250px; display: block; 
+                                    border-radius: 30px 0 30px 0;} --메인 호버--
+*/
+        .menu-1 > ul >li >a:hover::after { content: ""; width: 150px; height: 3px; background-color: #ccc4be; position: absolute;
+                                    top: 45px; left: 50px;}
+        .menu-1 li { position: relative; }
+        .menu-1 li li { position: relative; border: 1px solid #444; margin-top:10px; list-style: none; font-size: .9rem; bottom: 0;
+                        font-weight: 200; height: 40px; line-height: 40px; border-radius: 20px; transition: .5s; background-color: inherit;} /*--서브 메뉴 객체--*/
+       
+        .menu-1 li li:hover { height: 180%; top:200%; background-color: #8e8a66; color: white} /*--서브 메뉴 호버--*/
+        .menu-1 li li >a { display: block; text-decoration: none; color: inherit; }/*--서브 메뉴 A태그.--*/
+        .menu-1 ul ul { display: none; position: absolute; }  /*--서브 메뉴 전체.--*/
+        
+        .menu-1 li:hover > ul { display: block; text-align: center; width: 250px;}  /*--메인 호버하면 ul이 나타나는것.--*/
+        /*----------------------------------------nav---------------------------------------------*/
+        nav { width: 1200px; height: 2000px;  position: relative; top: 200px; left: 50%; border-radius: 10px;
+              transform: translate(-50%,-50%);}
+        .stair { position: absolute; top:20px; left: 50%; margin-left: -192.5px; width: 385px; height: 30px;}
+        .stair > span { font-size: 0.9rem; color: #888; font-weight: 700; display: inline-block;}
+        .stair > span:nth-child(3) { color: black;}
+        .stair > span:nth-child(2) { background-image: url(../btnIcon/soppingcart_newicon.svg); 
+                                     background-size: 600px; background-repeat: no-repeat; 
+                                     background-position:-5px -3px ; width: 7px; height: 13px; 
+                                     position: absolute; top:3px; left: 128px;}
+        .stair > span:nth-child(4) { background-image: url(../btnIcon/soppingcart_newicon.svg); 
+                                     background-size: 600px; height: 13px; width: 7px; 
+                                     background-repeat: no-repeat; background-position:-5px -3px;  
+                                     position: absolute; top:3px; left: 219px;}
+        .stair > span:nth-child(3),.stair > span:nth-child(5) { margin-left: 20px;}
+        /*----------------------------------------section---------------------------------------------*/
+        .tab_content { position: absolute; top:100px; left:0%;}
+        .section2 { width: 650px; height: 1450px; position: absolute; top: 570px; left: 250px;}
+        .icon_star { color: orangered; margin-left: 5px;}
+        h5 { font-size: .5rem; color: #333; position: absolute; top: 10px; left: 10px;}
+        .box1 { width: 100%; height: 50px; position: absolute; top:30px; border-top: 3px solid #444; border-bottom: 1px solid #ccc;
+                line-height: 50px; font-size: .9rem; font-weight: 600;}
+        .radio1 { display: none;}
+        .radio1 + label { width: 100px; height: 10px; display: inline-block; padding: 20px;  line-height: 10px; 
+                         cursor: pointer; font-weight: 700; background-color: #eae9db; color: #999; font-size: .9rem; text-align: center; }
+        .radio1:checked + label { background-color:  #f1f0e0; color: #444;}
+        input[id="tab01"]:checked ~ .con1 { display: block;} 
+        input[id="tab02"]:checked ~ .con2 { display: block;}
+        .conbox { background-color: #f1f0e0; width: 650px; height: 650px; display: none; }
+        .tab_sero { width: 120px; height: 50px; position: relative; font-size: .8rem; text-align: center;
+                    line-height: 50px; margin-bottom: 10px;}
+        .tab_sero3 { width: 120px; height: 140px;  position: relative; font-size: .8rem; text-align: center;
+                    line-height: 50px; margin-bottom: 10px; }
+        #wrapper input[type="text"] { display: block; border: none; height: 30px; border-radius: 5px; 
+                             border: 1px solid #ccc; box-sizing: border-box;  position: absolute;}
+        
+        .txt1 { width: 200px; left: 140px; top: 70px;}
+        .txt2 { width: 200px; left: 140px; top: 130px;}
+        .txt3 { width: 100px; left: 140px; top: 190px;}
+        .txt4 { width: 300px; left: 140px; top: 230px;}
+        .txt5 { width: 300px; left: 140px; top: 270px;}
+        input[id="adress_btn"] { width: 120px; height: 30px; background-color: #ccc; border-radius: 15px; position: absolute;
+                                top: 190px;left: 270px; border: none;}
+        .txt6 { width: 100px; left: 140px; top: 340px;}
+        input[id="adress_btn"]:hover { background-color: #222; color: orangered;}
+        .dash { position: relative; color: #999; font-weight: 500;}
+        .d1 { top: -100px; left: 246px;}
+        .txt7 { width: 100px; left: 260px; top:340px;}
+        .d2 { top: -100px; left: 357px;}
+        .txt8 { width: 100px; left: 385px; top:340px;}
+        .txt9 { width: 100px; left: 140px; top:400px;}
+        .d3 { top:-40px; left: 224px;}
+        .txt10 { width: 100px; left: 260px; top:400px;}
+        .d4 { top:-40px; left: 335px;}
+        .txt11 { width: 100px; left: 385px; top:400px;}
+        select { width: 340px; height: 30px; position: relative; left: 95px; top: 20px;}
+        #message2 { width: 340px; height: 30px; position: relative; left: 95px; top: 35px;}
+        .beasong_notice { font-size: .7rem; position: relative; top: 50px; left: 140px;}
+        
+         /*----------------------------------------aside---------------------------------------------*/
+        aside { width: 500px; height: 700px; border: 3px solid #000; position: absolute; top:600px; left: 915px;     
+                box-sizing: border-box; overflow: hidden; background-color: ivory; border-radius: 10px;}
+        .aside_sub { width: 460px; height: 600px; position: absolute; left: 50%; top:300px;
+                     transform: translate(-50%,-50%);}
+        h3 { font-weight: 700; font-size: 1.2rem; position: absolute; top:50px; left: 50%; transform: translate(-50%,-50%)}
+        .detail_area { width: 100%; height: 160px; position: absolute; top: 90px; border-top: 2px solid #555; 
+                       border-bottom: 1px solid #ccc;}
+        .main_text { font-size: 1.4rem; font-weight: 700; position: absolute; top:50px; left: 140px;}
+        .sub_text { font-size: .9rem; font-weight: 600; color: #222; position: absolute; left: 140px; top:90px;}
+        .detail_area > img { position: absolute; top: 10px; left: 20px;}
+        .detail_area2 { width: 100%; height: 280px; border-bottom: 1px solid #ccc; position: absolute; top: 260px;}
+        .sero { width: 140px; height: 50px;  font-size: .8rem; line-height: 50px; position: relative; top:10px;}
+        .garo { width: 320px; height: 50px; position: relative; top:-240px; left: 140px; text-align: end; line-height: 50px;}
+        input[type="checkbox"] { display: none;}
+        input[type="checkbox"]+label em { display: inline-block; width: 20px; height: 20px; background-position: 20px 20px;
+                                          background: url("../btnIcon/chk1.svg")no-repeat; position: absolute; top:550px; left: 20px;}
+        input[type="checkbox"]:checked +label em { background: url("../btnIcon/chk2.svg")no-repeat;}
+        input[type="checkbox"]:checked ~ #chkbtn { color: orangered;} /*체크드 하면 ~ 저게 바뀐다.*/
+        #chkbtn { width: 300px; height: 70px; border: none; position: absolute; top: 630px; left: 50%; transform: translate(-50%,-50%);
+                  font-size: 1.4rem; border-radius: 10px; line-height: 70px; border: 1px solid #ccc}
+        #chkbtn:hover { background-color: black; color: #fff;}
+        .agree { font-size: .8rem; color: #444; position: absolute; top: 553px; left: 60px;}
+         /*----------------------------------------쿠폰 마일리지---------------------------------------------*/
+        .ddddd { width: 100%; height: 300px; position: relative;top: 825px;}
+        .box2 { width: 100%; height: 50px; position: absolute; border-top: 3px solid #444; border-bottom: 1px solid #ccc;
+                line-height: 50px; font-size: .9rem; font-weight: 600;}
+        .tab_sero_cp { width: 120px; height: 50px; position: relative; font-size: .8rem; text-align: center;
+                    line-height: 50px; margin-bottom: 10px; top:70px;}
+        #couponList { width: 400px; position: relative; top: -40px; left: 140px;}
+        .txt12 { width: 150px; position: relative; left: 140px; top:140px;}
+        .pointBtn { width: 70px; height: 30px; background-color: #ccc; border-radius: 15px; text-align: center; line-height: 30px;
+                    font-size: .7rem; font-weight: 700; position: relative; left: 320px; top:-10px;}
+        .pointBtn:hover { color: orangered; background-color: #000;}
+        .pointHave { font-size: .7rem; text-decoration: underline; position: relative; left: 420px; top:-35px;}
+        .point_notice { position: relative; left: 140px;}
+        /*----------------------------------------카드사---------------------------------------------*/
+        .box3 {width: 100%; height: 50px; position: relative; top:900px; border-top: 3px solid #444; border-bottom: 1px solid #ccc;
+                line-height: 50px; font-size: .9rem; font-weight: 600;}
+        .card_tab { position: relative; top: 1100px; left: 50%; transform: translate(-50%,-50%);}
+        .card { display: none;}
+        .card_tab { width: 500px; height: 400px;}
+        .card + label { display: inline-block; width: 140px; height: 35px; border: 1px solid #ccc; margin: 10px;
+                                    border-radius: 30px; font-size: .7rem; line-height: 35px; text-align: center; 
+                                    box-sizing: border-box; font-weight: 600;}
+        .card:checked + label { background-color: black; color: white; border: 1px solid #000;}
+        .tabbox { width: 500px; height: 400px; ; display: none; position: relative; left: 10px;} 
+        input[id="cdtab01"]:checked ~ .tab1, input[id="cdtab02"]:checked ~ .tab2, input[id="cdtab03"]:checked ~ .tab3,
+        input[id="cdtab04"]:checked ~ .tab4, input[id="cdtab05"]:checked ~ .tab5, input[id="cdtab06"]:checked ~ .tab6,
+        input[id="cdtab07"]:checked ~ .tab7, input[id="cdtab08"]:checked ~ .tab8, input[id="cdtab09"]:checked ~ .tab9 
+        { display: block; margin-top: 10px;}
+        p { font-size: .7rem; line-height: 20px; font-weight: 600;}
+        b { font-size: .9rem;}
+        small { color: #444; text-decoration: underline;}
+        /*-------------------------------------------푸터----------------------------------------------*/
+        #wrapper2 { width: 100%; height: 550px;position: relative; top:1000px;}
+        .footerBg { width: 100%; height: 550px; position: absolute; top:20px opacity: .8;}
+        footer { width: 1200px; height: 470px; position: absolute; left: 50%; top: 310px; 
+                 transform: translate(-50%,-50%);}
+        /*--------------------------------------------푸터 왼 쪽----------------------------------------*/
+        .footer_left_area { width: 600px; height: 470px; position: relative; float: left; top: 0px;
+                            font-family: 'Apple SD Gothic NEO',sans-serif!important; }
+        .footer_left_area > h1 { font-weight: 900; font-size: 2.5rem; position: absolute; top: 100px; left: 20px;
+                                 font-family: 'Apple SD Gothic NEO',sans-serif!important;}
+        .footer_left_area > span { width: 90px; height: 5px; background-color: #000; position: absolute; 
+                                   left: 20px; top:90px;}
+        .open_time { position: absolute; font-size: .8rem; font-weight: 700; color: #666; top: 160px; left: 20px;}
+        .thin_row1 { position: absolute; top: 210px; left: 20px; width: 500px; height: 2px; 
+                     background-color: #000;}
+        .insIcon { position: relative; top: 220px; left: 10px; margin: 10px; transition: .3s;}
+        .insIcon:hover { position: relative; top: 210px; }
+        .thin_row2 { position: absolute; top: 300px; left: 20px; width: 500px; height: 2px; background-color: #000;}
+        .domain { position: absolute; top:330px; left: 20px; font-size: .8rem; font-weight: 700; color: #fff;}
+        /*--------------------------------------------푸터 오른쪽----------------------------------------*/
+        .footer_right_area { width: 600px; height: 470px; float: left; position: relative; top:0px;}
+        .category { font-size: 1.2rem; font-weight: 600; color: #444; float: left; margin-right: 60px; 
+                    position: relative; top: 90px;}
+        .sur_ { position: absolute; font-size: .7rem; font-weight: 700; color: #666; line-height: 20px; 
+                width: 100px; top: 120px;}
+        .category5 { left: 0px; top: 100px;  width: 100px;}
+        .category6 { left: 115px;}
+        .category7 { left: 240px;}
+        .subcri { font-size: 1.3rem; font-weight: 700; position: absolute; top: 220px;}
+        .emailrow { width: 200px; height: 20px; border: 1px solid #fff; background-color: inherit;                              position: absolute; top:310px; left: 0; color: #fff; font-weight: 700; padding: 5px;}
+        .subcri_btn { width: 100px; height: 30px; background-color: #fff; line-height: 32px; position: absolute;                 top:310px; left: 260px; text-align: center; font-weight: 700; }
+        .subcri_btn:hover { background-color: #000; color: orangered;}
+        .
+    </style>
+    </head>    
+    <body>
+   
+    <div id="wrapper">
+        
+        <header>
+            <a href="100_mainLayout.html"><img src="../imgs/brand_logo_not_BG.png" width="130px" class="logoIcon"></a>
+            <a href="46_(F)shoppingCart(1).html"><img src="../imgs/basket.svg" width="38px" class="shoppingCartIcon"></a>
+            <a href="77_mypage.html"><img src="../imgs/profile.svg" width="38px" class="ProfileIcon"></a>
+        </header>
+        <section class="menu-1">
+                <ul>
+                    <li><a href="">Ratib</a>
+                        <ul>
+                            <li><a href="50_aboutus.html">About Us</a></li>
+                          
+                        </ul>
+                    </li>
+                    <li><a href="">Product</a>
+                        <ul>
+                            <li><a href="42_(F)DetoxJuiceList.html">Detox juice</a></li>
+                            <li><a href="43_(F)PowderList.html">1 day Powder</a></li> 
+                            <li><a href="44_(F)skincareList.html">Skin care</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Community</a>
+                        <ul>
+                            <li><a href="48_notice.html">Notice</a></li>
+                            <li><a href="48_3_qna.html">Q &amp; a</a></li> 
+                            <li><a href="48_2_review.html">Review</a></li>
+                        </ul>
+                    </li>
+                </ul>
+        </section>
+        
+        <nav>
+         <div class="stair">
+         <span>01 SHOPPING BAG</span>
+         <span></span>
+         <span>02 ORDER</span>
+         <span></span>
+         <span>03 ORDER CONFIRMED</span>
+         </div>
+        </nav>
+        
+        
+        <div class="section2">
+        <h5><span class="icon_star">*</span>표시는 필수입력 항목</h5>
+        <div class="box1">&nbsp;배송정보</div>
+        <div class="tab_content">
+        <input type="radio" name="tabmenu" id="tab01" class="radio1" checked>
+        <label for="tab01">기존 배송지</label>
+        <input type="radio" name="tabmenu" id="tab02" class="radio1">
+        <label for="tab02">신규 배송지</label>
+       
+        <div class="conbox con1">
+            <div class="tab_sero" >배송지명</div>
+            <div class="tab_sero">수령인<span class="icon_star">*</span></div> 
+            <div class="tab_sero3">배송지<span class="icon_star">*</span></div>      
+            <div class="tab_sero">연락처 1<span class="icon_star">*</span></div>       
+            <div class="tab_sero">연락처 2</div>
+            <input type="text" value=" 욱이네집" class="txt1">
+            <input type="text"  value=" 김성욱" class="txt2">
+            <input type="text"  value=" 02589"  readonly class="txt3">
+            <input type="button" id="adress_btn" value="우편번호 검색" onclick="window.open('address','window_name','width=430,height=500,location=no,status=no,scrollbars=no');">
+            <input type="text" value=" 서울특별시 동대문구 무학로20다길 15-1" class="txt4">
+            <input type="text" value=" 로얄팰리스 303호" class="txt5">
+            <input type="text" value=" 010" class="txt6"><span class="dash d1"> - </span>
+            <input type="text" value=" 6501" class="txt7"><span class="dash d2"> - </span>
+            <input type="text" value=" 8114" class="txt8">
+            <input type="text" class="txt9"><span class="dash d3"> - </span><input type="text" class="txt10"><span class="dash d4"> - </span>
+            <input type="text" class="txt11">
+            <label for ="message"></label>
+               <select id="message">
+                <option value="">배송시 요청사항을 선택해 주세요</option>
+                <option>부재시 문앞에 놓아주세요.</option>
+                <option>부재시 경비실에 맡겨 주세요.</option>
+                <option>부재시 전화 또는 문자 주세요.</option>
+                <option>부재시 전화 또는 문자 주세요.</option>
+                <option>택배함에 넣어 주세요.</option>
+                <option>파손위험상품입니다. 배송시 주의해주세요.</option>
+                <option>배송전에 연락주세요.</option>
+            </select>
+            <p class="beasong_notice">
+               -도서산간 지역의 경우 추후 수령 시 추가 배송비가 발생할 수 있으며, 해외배송은 불가합니다.<br>
+               <br>
+               -배송지 불분명 및 수신불가 연락처 기입으로 반송되는 왕복 택배 비용은 구매자 부담으로<br>
+                &nbsp;정확한 주소 및 통화 가능한 연락처 필수 기입.<br>
+                <br>
+               -대리 주문으로 해외 주소로 발송 전, 주문품 꼭 확인해주세요.<br>
+                &nbsp;오배송 및 불량 교환에 따른 배송비는 국내 택배 비용만 지원됩니다.<br>
+            </p>
+        </div>
+            
+            
+              
+               
+            
+       
+        <div class="conbox con2">
+            <div class="tab_sero">배송지명</div>
+            <div class="tab_sero">수령인<span class="icon_star">*</span></div> 
+            <div class="tab_sero3">배송지<span class="icon_star">*</span></div>      
+            <div class="tab_sero">연락처 1<span class="icon_star">*</span></div>       
+            <div class="tab_sero">연락처 2</div>
+            <input type="text" class="txt1">
+            <input type="text" class="txt2">
+            <input type="text" readonly class="txt3">
+            <input type="button" id="adress_btn" value="우편번호 검색" onclick="window.open('address','window_name','width=430,height=500,location=no,status=no,scrollbars=no');">
+            <input type="text" class="txt4"><input type="text" class="txt5">
+            <input type="text" class="txt6"><span class="dash d1"> - </span><input type="text" class="txt7"><span class="dash d2"> - </span>
+            <input type="text" class="txt8">
+            <input type="text" class="txt9"><span class="dash d3"> - </span><input type="text" class="txt10"><span class="dash d4"> - </span>
+            <input type="text" class="txt11">
+<!--
+            <input type="checkbox" id="chk">
+            <label for="chk"><em></em></label><div class="basic">기본배송지로 설정하기</div>
+            <label for ="message"></label>
+-->
+               <select id="message2">
+                <option value="">배송시 요청사항을 선택해 주세요</option>
+                <option>부재시 문앞에 놓아주세요.</option>
+                <option>부재시 경비실에 맡겨 주세요.</option>
+                <option>부재시 전화 또는 문자 주세요.</option>
+                <option>부재시 전화 또는 문자 주세요.</option>
+                <option>택배함에 넣어 주세요.</option>
+                <option>파손위험상품입니다. 배송시 주의해주세요.</option>
+                <option>배송전에 연락주세요.</option>
+            </select>
+            <p class="beasong_notice">
+               -도서산간 지역의 경우 추후 수령 시 추가 배송비가 발생할 수 있으며, 해외배송은 불가합니다.<br>
+               <br>
+               -배송지 불분명 및 수신불가 연락처 기입으로 반송되는 왕복 택배 비용은 구매자 부담으로<br>
+                &nbsp;정확한 주소 및 통화 가능한 연락처 필수 기입.<br>
+                <br>
+               -대리 주문으로 해외 주소로 발송 전, 주문품 꼭 확인해주세요.<br>
+                &nbsp;오배송 및 불량 교환에 따른 배송비는 국내 택배 비용만 지원됩니다.<br>
+            </p>
+            
+            
+        </div>
+    </div>
+    
+        <div class="ddddd">
+            <div class="box2">쿠폰 / 마일리지</div>
+            <p class="tab_sero_cp">보너스 쿠폰</p>
+            <p class="tab_sero_cp">마일리지</p>
+            <label for ="couponList"></label>
+            <select id="couponList">
+                <option value="">사용가능 쿠폰 1장 / 보유쿠폰 3장</option>
+                <option>신규회원 10% 할인쿠폰</option>
+                <option>red 회원 5% 할인쿠폰</option>
+                <option>중복 5% 할인쿠폰</option>
+            </select>
+            <input type="text" class="txt12" placeholder="0">
+            <div class="pointBtn">모두 사용</div>
+            <span class="pointHave">보유 마일리지 5,000p</span>
+            <p class="point_notice">
+               - 할인쿠폰 제외 상품이 포함되어 있는 경우, 해당 제품을 제외하고 할인이 적용됩니다.<br>
+               - 브랜드쿠폰과 보너스쿠폰은 중복사용이 불가능합니다.<br>
+               - 일부 상품(할인쿠폰제외상품)에는 보너스쿠폰이 적용되지 않습니다.<br>
+               - 쿠폰에 따라 최대 쿠폰 사용 금액이 제한될 수 있습니다.
+            </p>
+        </div>
+        
+        
+        
+        
+        
+
+        <div class="box3">결제방법</div>
+        <div class="mueja">무이자 카드혜택 보기 +</div>
+
+        <div class="card_tab">
+        <input type="radio" name="cardtab" id="cdtab01" class="card"checked>
+        <label for="cdtab01">신용/체크카드</label>
+        <input type="radio" name="cardtab" id="cdtab02" class="card">
+        <label for="cdtab02">현대카드</label>
+        <input type="radio" name="cardtab" id="cdtab03" class="card">
+        <label for="cdtab03">네이버페이</label>
+        <input type="radio" name="cardtab" id="cdtab04" class="card">
+        <label for="cdtab04">페이코</label>
+        <input type="radio" name="cardtab" id="cdtab05" class="card">
+        <label for="cdtab05">카카오페이</label>
+        <input type="radio" name="cardtab" id="cdtab06" class="card">
+        <label for="cdtab06">삼성페이</label>
+        <input type="radio" name="cardtab" id="cdtab07" class="card">
+        <label for="cdtab07">무통장입금(가상계좌)</label>
+        <input type="radio" name="cardtab" id="cdtab08" class="card">
+        <label for="cdtab08">휴대폰결제</label>
+        <input type="radio" name="cardtab" id="cdtab09" class="card">
+        <label for="cdtab09">실시간계좌이체</label>
+        
+        <div class="tabbox tab1">
+        <p><b>신용/체크카드</b><br>
+           <br>
+            MAC 환경에서도 신용카드 결제가 가능합니다.(ISP 결제 제외)<br>
+            국내 모든 카드 사용이 가능하며 해외에서 발행된 카드는 이용하실수 없습니다. (해외배송은 불가능합니다)<br>
+            금요일 오후 6시~ 일요일 주문은 결제 완료 후 취소 요청시 고객센터 > 주문취소를 이용하시면 됩니다.<br>
+            <br>
+            하나카드 1Q Shopping+ 카드 X 라티브 프로모션 안내<br>
+            라티브에서 발급 받은 1Q Shopping+ 카드로 2만원 이상 결제 시 5천원 청구 할인 혜택이 제공됩니다.<br>
+            (전월 실적 30만원 이상)<br>
+            발급 후 다음달 말일까지는 실적과 관계 없이 혜택이 제공됩니다.<br>
+            혜택은 카드 발급, 등록 후 월 1회 제공되며 총 12개월간 받으실 수 있습니다. (2020년 2월말까지 발급된 카드에 한함.)<br>
+            프로모션 기간 종료 후에는 카드를 보유하고 있더라도 혜택 이용이 불가합니다.</p>    
+        </div>
+        <div class="tabbox tab2">
+        <p><b>현대카드 결제 시</b><br><br>
+            모든 상품 2% 청구할인, 20% M포인트 사용, 3개월 무이자 할부 혜택이 제공됩니다.<br>
+            M포인트 사용을 안 할 경우 결제 시 카드 포인트 사용 팝업창에서 사용안함을 선택하시면 됩니다.<br>
+            <br>
+           <small>레드 쇼핑 바우처 사용</small><br>
+            <br>
+            30만원 이상 the Red Edition2 결제 시 레드 쇼핑 바우처 사용을 선택하여 이용하실 수 있습니다.<br>
+            M포인트 사용과 바우처는 중복 사용할 수 없습니다.<br>
+            바우처를 이용한 구매는 교환 및 부분 취소가 불가합니다. (전체 취소 후 재결제)<br>
+            바우처 사용은 즉시 할인이 아닌 청구할인으로 결제 적용됩니다.<br>
+            레드바우처 특성상 품절 시 부분 취소가 되지 않아 결제 전 재고 확인 부탁드립니다.<br>
+            현대카드 Familly카드 (임직원 카드) 결제 시 5% 청구할인 혜택이 제공됩니다.<br>
+            공인인증서안내 안심클릭 의무사용</p>
+        </div>
+        <div class="tabbox tab3">
+        <p><b>네이버페이</b><br><br>
+            주문 변경 시 카드사 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라 변경될 수 있습니다.<br>
+            네이버페이는 네이버ID로 별도 앱 설치 없이 신용카드 또는 은행계좌 정보를 등록하여 네이버페이 비밀번호로 
+            결제할 수 있는 간편결제 서비스입니다.<br>
+            네이버페이 카드 간편결제는 네이버페이에서 제공하는 카드사 별 무이자, 청구할인 혜택을 받을 수 있습니다.<br>
+            <br>
+            (단, 네이버페이를 통해 '29CM X 하나 1Q Shopping+ 카드'로 결제 시 청구할인이 불가합니다.)
+            <br>
+            결제 가능한 신용카드<br>
+            신한, 삼성, 현대, BC, 국민, 하나, 롯데, NH농협, 씨티<br>
+            <br>
+            결제 가능한 은행<br>
+            NH농협, 국민, 신한, 우리, 기업, SC제일, 부산, 경남, 수협, 우체국</p>
+        </div>
+        <div class="tabbox tab4">
+        <p><b>페이코</b><br><br>
+            PAYCO는 NHN엔터테인먼트가 만든 안전한 간편결제 서비스입니다.<br>
+            <br>
+            PAYCO 신용카드 PAYCO 간편계좌<br>
+            휴대폰과 카드 명의자가 동일해야 하며 결제 금액 제한은 없습니다.<br>
+            결제 가능 카드 : 모든 신용/체크 카드 (현대카드 제외)<br>
+            청구할인 불가 : 페이코를 통해 '29CM X 하나 1Q Shopping+ 카드'로 결제 시 청구할인이 불가합니다.<br>
+        </div>
+        <div class="tabbox tab5">
+        <p><b>카카오 페이</b><br><br>
+            카카오페이 간편결제 혜택 및 할부 적용 여부는 해당 카드사 정책에 따라 변경될 수 있습니다.<br>
+            자세한 내용은 카카오페이에서 제공하는 카드사별 정책을 확인해주세요.<br>
+            <br>
+            결제 불가 카드 : 현대카드<br>
+            청구할인 불가 : 카카오페이를 통해 '라티브 X 하나 1Q Shopping+ 카드'로 결제 시 청구할인이 불가합니다.<br></p>
+        </div>
+        <div class="tabbox tab6">
+        <p><b>삼성 페이</b><br><br>
+            결제 가능 카드 : 삼성, 신한, 국민, 롯데, 농협, 비씨, 하나, 우리, 씨티<br>
+            결제 불가 카드 : 현대카드<br>
+            '라티브 X 하나 1Q Shopping+ 카드' 청구할인 혜택을 받으시려면 결제방법 중 <br>
+            '신용/체크카드'를 선택해 결제해주시기 바랍니다.<br></p>
+        </div>
+        <div class="tabbox tab7">
+        <p><b>무통장입금 (가상계좌)</b><br><br>
+            안전한 쇼핑 거래를 위해 쇼핑몰 보증보험 서비스를 운영중 입니다.<br>
+            현금결제에 대해 당 주문건의 보증기간동안 결제금액 보장.<br>
+            <br>
+            에스크로(결제대금예치) 신청<br>
+            입금기한 : 주문기준일 +3일<br>
+            <br>
+            무통장 입금시 사용되는 가상계좌는 매 주문 시마다 새로운 계좌번호(개인전용)가 부여되며<br>
+            해당 주문에만 유효합니다.<br>
+
+            다른 주문건에 대한 가상계좌로 입금하시거나 잘못된 계좌로 입금하시면 자동 입금 확인이 되지 않으며,<br>
+            다른 계좌번호로 잘못 입력하신 경우에는 고객센터로 문의 주시기 바랍니다.<br>
+            <br>
+            계좌번호는 주문완료 페이지에서 확인할수 있으며 sms 문자 안내도 드립니다.<br>
+            에스크로 서비스를 받으실 수 있습니다.</p>
+        </div>
+        <div class="tabbox tab8">
+        <p><b>휴대폰결제</b><br><br>
+            라티브에서 휴대폰으로 결제 가능한 최대 금액은 월 30만원 이며 개인별 한도금액은 통신사 및 개인 설정에<br>
+            따라 다를 수 있습니다.<br>
+            휴대폰으로 결제하신 금액은 익월 휴대폰 요금에 함께 청구되며 별도의 수수료는 부과되지 않습니다.<br>
+            휴대폰 소액결제로 구매하실 경우 현금영수증이 발급되지 않습니다.<br>
+            <br>
+            &#42;다음의 경우에는 휴대폰 결제를 이용하실 수 없습니다.<br>
+            <br>
+            미납/체납 중인 휴대폰 요금이 있을 경우<br>
+            이동통신사 가입기간(번호이동포함) 6개월 이하인 경우<br>
+            외국인, 미성년자 요금제, 법인휴대폰, 선불요금제인 경우<br>
+            LGT 이용자 중 통신사로 [자동결제] 차단 신청하신 경우<br>
+            라티브에서 휴대폰으로 결제 가능한 최대 금액은 월 30만원 이며 개인별 한도금액은 통신사 및 개인 설정에 따라 다를 수 있습니다.<br>
+            휴대폰으로 결제하신 금액은 익월 휴대폰 요금에 함께 청구되며 별도의 수수료는 부과되지 않습니다.<br>
+            결제 당월 취소/반품/품절환불 : 휴대폰 이용요금에 부과예정이던 금액이 취소됩니다.<br>
+            결제 당월 지난 후 취소/반품/품절환불 : 환불계좌 확인 후 무통장 계좌로<br>
+            휴대폰으로 결제하신 금액은 익월 휴대폰 요금에 함께 청구되며 별도의 수수료는 부과되지 않습니다.<br></p>
+        </div>
+        <div class="tabbox tab9">
+        <p><b>실시간계좌이체</b><br><br>
+            실시간 이체 결제시 화면 아래 '결제하기'버튼을 클릭하시면 실시간 이체 결제 창이 나타납니다.<br>
+            실시간 이체 결제 창을 통해 입력되는 고객님의 정보는 128bit로 안전하게 암호화되어 전송되며 <br>
+            승인 처리 후 정보는 승인 성공/ 실패 여부에 상관없이 자동 으로 폐기되므로, 안전합니다.<br>
+            <br>
+            실시간 이체 결제 신청시 승인 진행에 다소 시간이 소요될 수 있으므로 '중지', '새로고침'을 누르지 마시고 <br>
+            결과 화면이 나타 날때까지 기다려 주십시오.<br>
+            신용카드/ 실시간 이체는 결제 후, 무통장입금은 입금확인 후 배송이 이루어집니다.<br>
+            <br>
+            국내 모든 카드 사용이 가능하며 해외에서 발행된 카드는 이용하실수 없습니다. (해외배송은 불가능합니다.)<br>
+            금요일 오후 6시 ~ 일요일 주문은 결제완료 후 취소요청시, [고객센터]-[주문취소]를 이용하시면 됩니다. <br>
+            (상품출고는 토요일에도 정상적으로 이루어집니다.)<br>
+            <br>
+            라티브는 구매안전서비스로 에스크로 서비스에 가입되어있습니다.<br>
+            현금거래에 대해 에스크로 서비스를 받으시려면 [무통장 입금(가상계좌)] 결제방식을 선택하시기 바랍니다.<br>
+            온라인 실시간 계좌 이체 서비스는 은행계좌만 있으면 누구나 이용하실 수 있는 서비스로, 별도의 신청없이<br>
+            그 대금을 자신의 거래은행의 계좌로부터 바로 지불하는 서비스입니다.<br>
+            안전한 거래를 위해 결제시 공인인증서가 반드시 필요합니다.<br>
+            은행 이용가능 서비스 시간은 은행사정에 따라 다소 변동될수 있습니다.</p>
+        </div>
+        
+        
+        
+        
+        
+    </div>
+        </div>
+        
+            
+            
+        </div>
+        <aside>
+           <div class="aside_sub">
+            <h3>주문상품 정보 / 총 1개</h3>
+            <div class="detail_area">
+                <img src="../imgs/wheatglass_juice.png" width="100px">
+                <p class="main_text">Wheatglass Juice</p>
+                <p class="sub_text">옵션: 3일분</p>
+            </div>
+            <div class="detail_area2">
+                <div class="sero">총 상품금액</div>
+                <div class="sero">배송비</div>
+                <div class="sero">마일리지 사용</div>
+                <div class="sero">쿠폰 사용</div>
+                <div class="sero">총 결제금액</div>
+                <div class="garo">19,900원</div>
+                <div class="garo">3,000원</div>
+                <div class="garo">0원</div>
+                <div class="garo">0원</div>
+                <div class="garo"><strong>22,900</strong>원</div>  
+            </div>
+            <input type="checkbox" id="chk">
+            <label for="chk"><em></em></label><div class="agree">주문하실 상품 및 결제, 주문정보 확인하였으며, 이에 동의합니다. (필수)</div>
+            <input type="button" value="Check out" id="chkbtn">
+            </div>
+        </aside>
+        
+   <div id="wrapper2" class="wrapper">
+       <img src="../imgs/footer.png" class="footerBg">
+        <footer>
+            <div class="footer_left_area">
+                    <span class="h1row"></span>
+                    <h1 class="tel">070-4133-9999</h1>
+                    <p class="open_time">
+                    AM 10:00 ~ PM 05:00 Off-time PM 12:00 ~ PM 02:00 <br>
+                    DAY OFF (SATURDAY. SUNDAY, HOLIDAY)
+                    </p>
+                    <div class="thin_row1"></div>
+                    <a href="#"><img src="../btnIcon/instagram_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="../btnIcon/facebook_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="../btnIcon/twitter_btn.svg" width="48px" class="insIcon"></a>
+                    <div class="thin_row2"></div>
+                    <p class="domain">
+                    사업자명 (주)네이키드베지터블스 ㅣ 대표이사 윤예린 ㅣ 사업자등록번호 356-81-01648<br>
+                    대표전화 070-4133-9999 ㅣ 통신판매업신고번호 제 2019-성남분당B-0439 호<br>
+                    주소 서울특별시 서초구 강남대로 39길 6-7, 154 개인정보보안책임자 윤예린 070-4133-9999 ㅣ<br>
+                    copyright (c) All Right Reserved Hosting by wook</p>
+            </div>
+            <div class="footer_right_area">
+                    <p class="category">Ratib&nbsp;&nbsp;</p>   
+                    <p class="category">Product</p>   
+                    <p class="category">Community</p>   
+                    <p class="category">Mypage</p><br>
+                    <p class="sur_ category5"><br>about us</p>  
+                    <p class="sur_ category6">Detox Juice<br>1 Day powder<br>Skin care</p>  
+                    <p class="sur_ category7">Notice<br>QnA<br>Review</p> 
+                    <p class="subcri">
+                    Join our newsletter and keep up to date<br>
+                    with the latest products, special offers from RATIB.
+                    </p>
+                    <input type="text" placeholder="Enter E-mail" class="emailrow">
+                    <div class="subcri_btn">Subcribe</div>
+            </div>
+        </footer>
+    </div>
+  
+    </body>
+</html>

@@ -1,0 +1,76 @@
+{
+    
+    "productlist" : [
+        {
+            "productimage" : "subImage/product1x640.png",
+            "name" : "가그린검가드에스",
+            "division" : "제품구분 : 의약외품",
+            "effect" : "효능분류 : 구강관련제제"
+            
+        },
+        {
+            "productimage" : "subImage/product2x640.png",
+            "name" : "가그린 쿨키스",
+            "division" : "제품구분 : 생활건강",
+            "effect" : "효능분류 : 캔디류(식품)"
+            
+        },
+        {
+            "productimage" : "subImage/product3x640.png",
+            "name" : "가그린 블라스트 치약",
+            "division" : "제품구분 : 신제품",
+            "effect" : "효능분류 : 구강관련제제"
+            
+        },
+        {
+            "productimage" : "subImage/product4x640.png",
+            "name" : "가그린 후레쉬액",
+            "division" : "제품구분 : 의약외품",
+            "effect" : "효능분류 : 구강관련제제"
+            
+        },
+        {
+            "productimage" : "subImage/product5x640.png",
+            "name" : "거글스프레이(포비돈요오드)",
+            "division" : "제품구분 : 일반의약품",
+            "effect" : "효능분류 : 치과구강용약"
+            
+        },
+        {
+            "productimage" : "subImage/product6x640.png",
+            "name" : "계안겔",
+            "division" : "제품구분 : 일반의약품",
+            "effect" : "효능분류 : 피부질환제"
+            
+        },
+        {
+            "productimage" : "subImage/product7x640.png",
+            "name" : "굿아이",
+            "division" : "제품구분 : 신제품",
+            "effect" : "효능분류 : 소염"
+            
+        },
+        {
+            "productimage" : "subImage/product8x640.png",
+            "name" : "네일메드 사이너스린스",
+            "division" : "제품구분 : 신제품",
+            "effect" : "효능분류 : 기타"
+            
+        },
+        {
+            "productimage" : "subImage/product9x640.png",
+            "name" : "노스카나겔",
+            "division" : "제품구분 : 일반의약품",
+            "effect" : "효능분류 : 조직세포기능용의약품"
+            
+        },
+        {
+            "productimage" : "subImage/product10x640.png",
+            "name" : "더스논",
+            "division" : "제품구분 : 의약외품",
+            "effect" : "효능분류 : 기타"
+        }
+    ]
+
+    
+}

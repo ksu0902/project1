@@ -1,0 +1,12 @@
+
+
+.tabs { position:relative; border:1px solid #ccc; width:100%; } 
+.tabs a.tab {display:block; width:50%; position: absolute; text-align: center; font-size: 14px;
+   color: #fff; background: pink; padding: 10px 0} 
+.tabs a.tab1{left:0; top:0}
+.tabs a.tab2{left:50%; top:0}
+
+
+.tabs .contlist { margin-top:50px;
+    padding:15px;line-height:1.5em; background:#CCF;
+} 

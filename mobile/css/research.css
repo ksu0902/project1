@@ -1,0 +1,29 @@
+.subvisual img { width: 100%;}
+#content { clear: both; overflow: hidden;}
+#content h2 { font-weight: bold; font-size: 20px; color: #777; padding: 15px 20px 20px 15px;}
+#content h2::before {content: ""; width: 9px; height: 22px; background: #0090C2; display: block; float: left; margin-right: 5px;}
+.list { padding: 20px 10px 20px 20px; overflow: hidden; float: right;}
+.list span { display: block; color: #aaa; font-weight: 700; margin-right: 10px; float: left; }
+.list a:nth-of-type(1) span::after,.list a:nth-of-type(2) span::after { content: ""; display: block; width: 3px; height: 3px; background: #ddd; border-radius: 50%; float: right; margin: 7px 0 0 7px;}
+.list a:nth-of-type(3) span { color: #00506c;}
+
+.boxbg { background: #D6E5EA; height:100px; position: relative;}
+.boxbg > div { width: 90%; height: 2px; background: #037096; position: absolute; left: 50%; top:50%; margin-left: -45%; z-index: 1}
+.boxbg span { display: block; width: 8px; height: 8px; background: #fff; border: 3px solid #037096; border-radius: 50%;margin: 5px;}
+.boxbg > p { color: #003b50; font-weight: bold; padding: 5px 0 0 15px;}
+.boxbg li { position: relative; width: 12%; top: 50%; margin-top: 18px; float: left; z-index: 5;}
+.boxbg li:nth-of-type(1){ margin-left: 3%;}
+.boxbg li p { font-weight:700; color: #666; font-size: 12px;}
+
+.introtitle { clear: both; overflow: hidden; line-height: 1.5em; padding: 0 5px;}
+.introtitle li:nth-of-type(1) {color: #0090C2; font-size: 16px; font-weight: bold; padding: 15px 0;}
+.introtitle li:nth-of-type(2) {color: #888; font-weight: 600;}
+
+.historylist { margin-top: 40px; border-top:1px solid #ddd; }
+.historylist dl{ overflow: hidden; border-bottom: 1px solid #ddd; padding: 15px 5px;}
+.historylist dt{ color: #037096; min-width: 80px; float: left; font-weight: bolder; font-size: 20px; padding-left: 5px;}
+.historylist dd { color: #666; margin-left: 85px; line-height: 1.5em;}
+.historylist dd::before {content: ""; width: 3px; height: 3px; background: #0090C2; display: block; float: left; margin: 10px 10px;}
+
+
+

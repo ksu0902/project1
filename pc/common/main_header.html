@@ -1,0 +1,29 @@
+<header>        
+        <ul>
+            <?
+    if(!$userid)
+	{
+?>
+          <li><a href="./login/login_form.php">로그인</a></li>
+          <li><a href="./member/member_check.html">회원가입</a></li>
+<?
+	}
+	else
+	{
+?>
+		<?=$usernick?> (level:<?=$userlevel?>) | 
+		<li><a href="./login/logout.php">로그아웃</a></li>
+		<li><a href="./login/member_form_modify.php">정보수정</a></li>
+<?
+	}
+?>
+        </ul> 
+        <nav>
+            <ul>
+                <li>애애애</li>
+                <li>오오오</li>
+                <li>우우우</li>
+                <li>이이이</li>
+            </ul>
+        </nav>
+</header>

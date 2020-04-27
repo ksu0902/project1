@@ -1,0 +1,7 @@
+ * { margin: 0; padding: 0;}
+        header { height: 100px; background: #eee; border-top: 25px solid #93bcc9;}
+        header>ul>li {display: block; width: 100px; float: right; position: relative; top:-25px;}
+        nav { overflow: hidden; clear: both;}
+        nav ul li {display: block; float: left;}
+        a { text-decoration: none; color: #333;}
+    

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>레이아웃 구성 제대로 짜는 중</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Cinzel|Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        /*-------------------------------------- 기본적인 스타일들 ---------------------------------------*/
+        * { margin: 0; padding: 0;}
+        html, body { width: 100%; height: 100%; background-color: white;} /*#f6f5e9*/
+        .wrapper { width: 100%; height: 100%; background-color: #f5f3e1; position: relative; left: 50%; top:50%; transform: translate(-50%,-50%);}
+        p { text-decoration: none; color: inherit;}
+        /*----------------------------------- header(logo, icon) -----------------------------------------*/
+        header { height: 220px; width: 1200px; position: relative; top: 110px; left: 50%; 
+                transform: translate(-50%,-50%);}
+        .logoIcon { width: 130px; position: absolute; top: 50px; left: 50%; margin-left: -65px;  }
+        .shoppingCartIcon { width: 38px; position: absolute; top: 95px; left: 90%; margin-left:-38px;
+                            }
+        .ProfileIcon { width: 38px; position: absolute; top: 95px; left: 100%; margin-left:-76px;}
+        /*----------------------------------- menu bar -----------------------------------------*/
+        ul,li { font-family: 'Vollkorn', serif; font-weight: 200;}
+        a { text-decoration: none; color: inherit;}
+        .menu-1 { text-align: center; position: relative; top:0px; z-index: 7}
+        .menu-1 > ul { display:inline-block; width: 100%; height: 60px; line-height: 60px; 
+                       border-top:1px solid #444; background-color: #f6f5e9; border-bottom: 1px solid #000; 
+                       box-sizing: border-box;} /*--nav--*/
+        .menu-1 > ul >li { display: inline-block; width: 250px; font-size: 1.2rem; } /*--메인 메뉴--*/
+        .menu-1 > ul >li >a { display: block; text-decoration: none; color: inherit;  transition: .5s;} /*--메인A태그 메뉴--*/
+        .menu-1 > ul >li >a:after { content: ""; width: 0; height: 3; background-color: inherit; position: absolute;
+                                    top: 45px; left: 50px; transition: .5s;}
+/*
+        .menu-1 > ul >li:hover >a { background-color: #dbdace; height: 58px; width: 250px; display: block; 
+                                    border-radius: 30px 0 30px 0;} --메인 호버--
+*/
+        .menu-1 > ul >li >a:hover::after { content: ""; width: 150px; height: 3px; background-color: #ccc4be; position: absolute;
+                                    top: 45px; left: 50px;}
+        .menu-1 li { position: relative; }
+        .menu-1 li li { position: relative; border: 1px solid #444; margin-top:10px; list-style: none; bottom: 0;
+                        font-size: .9rem; font-weight: 200; height: 40px; line-height: 40px; border-radius: 20px; transition: .5s; background-color: inherit; background-color: #f6f5e9;} /*--서브 메뉴 객체--*/
+       
+        .menu-1 li li:hover { height: 180%; top:200%; background-color: #8e8a66; color: white} /*--서브 메뉴 호버--*/
+        .menu-1 li li >a { display: block; text-decoration: none; color: inherit; }/*--서브 메뉴 A태그.--*/
+        .menu-1 ul ul { display: none; position: absolute; }  /*--서브 메뉴 전체.--*/
+        
+        .menu-1 li:hover > ul { display: block; text-align: center; width: 250px;}
+        /*---------------------------------------첫번째 비디오-----------------------------------------*/
+        .video1 { position: absolute; top: 62%; left: 50%; transform: translate(-50%,-50%); z-index: -2;}
+        .video1 > video { width: 1200px; position: absolute; top: 59%; left: 50%; transform:translate(-50%,-50%);}
+        .leafFrame > img { width: 100%; height: 100%; z-index: -1;}
+        .biglefttxt { font-family: 'Abril Fatface', cursive; font-size: 5rem; color: ivory; position: absolute;
+                      top: 42%; left: 30px; width: 200px; }
+        .smalltoptxt { width: 100px; height: 150px; font-family: 'Abril Fatface', cursive; font-size: .9rem;                      position: relative; left: 50%; top: -820px; text-align: center; 
+                       transform:translate(-50%,-50%); }
+        .round { width: 50px; height: 50px; border-radius: 25px; background-color: #efc452; position: absolute;
+                 left: 50%; top: 90%; transform: translate(-50%,-50%) scale(1.5);}
+        .bigrighttxt { font-family: 'Abril Fatface', cursive; position: absolute; color: #444; width: 200px;
+                        left: 94%; top: 80%; transform:translate(-50%,-50%) rotate(-90deg);}
+        .videorow { width: 800px; height: 2px; position:absolute; left: 98%; top: 56%;                                         transform:translate(-50%,-50%)rotate(-90deg); background-color: #222; }
+        /*---------------------------------------두번째 먼슬리 베스트-----------------------------------------*/
+        
+         #wrapper2 { width: 100%; height: 100%; 
+                     background-blend-mode: multiply; 
+                     z-index: -1; }
+/*
+        .shineframe > img { width: 100%; height: 100%; z-index: 1; opacity: .9; animation-name: shAni; 
+                            animation-duration: 5s; animation-iteration-count: infinite; float: left;
+                            animation-timing-function: linear; position: absolute; left:50%; top:50%;
+                            transform:translate(-50%,-50%);}
+*/      
+        .monthlyBest { height: 200px; font-family: 'Abril Fatface', cursive; font-size: 2rem; 
+                        position: absolute; top:200px;left: 50%;transform: translate(-50%,-50%);}
+        .monthlyBest > span { width: 400px; height: 5px; background-color: olive; position: absolute; 
+                              top:35%; left:50%; transform: translate(-50%,-50%);}
+        #subwrapper { width: 1200px; height: 100%; position: relative; left: 50%; top:100px;
+                      margin-left: -600px;}
+        .roundLeafImgs { width: 1200px; float: left; position: absolute; height: 280px; top: 42%; left: 50%;                        transform: translate(-50%,-50%); display: block; z-index: 2; 
+                         }
+        .main2imgslist { width: 1200px; height: 280px; display: block; position: absolute; top:40%; left: 49.5%;
+                         transform:translate(-50%,-50%); z-index: 5; float: left; }
+        
+        .main2imgslist > img { transition: 1s;}
+        .main2imgslist > img:nth-of-type(1) { width: 210px;}
+        .main2imgslist > img:nth-of-type(2) { width: 240px;}
+        .main2imgslist > img:nth-of-type(3) { width: 190px;}
+        .main2imgslist > img:hover { transform: rotate(10deg); z-index: 3;}
+        .nameTaglist { width: 1200px; height: 100px; position: absolute; top: 67%; left: 50%; 
+                       transform:translate(-50%,-50%); z-index: 1}
+        .nameTaglist> img { width: 300px }
+        .nameTaglist> img:nth-of-type(1) { margin-left: 20px;}
+        .nameTaglist> img:nth-of-type(2) { margin-left: 100px;}
+        .nameTaglist> img:nth-of-type(3) { margin-left: 100px;}
+        .nametagtxtlist { font-family: 'Abril Fatface', cursive; width: 1200px; height: 30px; 
+                           position: relative; left: 50%; top: 62.5%; margin-left: -600px;
+                          }
+        .nametagtxtlist > p { position: absolute; display: inline-block; z-index: 2;  top: 0px;}
+        .nametagtxtlist > p:nth-of-type(1) { left: 70px;} 
+        .nametagtxtlist > p:nth-of-type(2) { left: 470px;} 
+        .nametagtxtlist > p:nth-of-type(3) { left: 890px;} 
+        .pricetxtlist { width: 1200px; height: 50px; position: absolute; top: 61.2%; left:0;
+                        font-family: 'Abril Fatface', cursive; font-size:.8rem;}
+        .pricetxtlist > p { display: inline-block; position: absolute; top: 15px;}
+        .pricetxtlist > p:nth-of-type(1) { left: 250px; }
+        .pricetxtlist > p:nth-of-type(2) { left: 655px;}
+        .pricetxtlist > p:nth-of-type(3) { left: 1060px;}
+        /*---------------------------------------세번째 인스타그램-----------------------------------------*/
+        .instagramImgs { width: 1200px; height: 100%; position: relative; float: left; left: 50%; top:50%;
+                         transform: translate(-50%,-50%); }
+        .instagramImgs > h1 { font-weight: 600; font-size: 2rem; font-family: 'Abril Fatface', cursive; 
+                              position: absolute; left: 50%; top:5%; transform:translate(-50%,-50%);}
+        .instagramImgs > span { width: 200px; height: 5px; background-color: olive; position: absolute;
+                                left: 50%; top: 10%;transform:translate(-50%,-50%); }
+        .instagramImgs > div { width: 300px; height: 300px; background-color: #e7e3d3; float: left; margin: 20px; 
+                           position: relative; top: 120px; left: 90px; overflow: hidden;}
+        .instagramImgs img { width: 300px; height: 300px; float: left; transition: 1s;}
+        .instagramImgs img:hover { transform: scale(1.1)}
+        /*--------------------------------------------푸 터----------------------------------------*/
+        .footerBg { width: 100%; height: 550px; position: relative; top:-150px;    }
+        footer { width: 1200px; height: 440px; position: absolute; left: 50%; top: 1200px; 
+                 transform: translate(-50%,-50%);}
+        /*--------------------------------------------푸터 왼 쪽----------------------------------------*/
+        .footer_left_area { width: 600px; height: 470px; position: relative; float: left; top:0px;
+                            font-family: 'Apple SD Gothic NEO',sans-serif!important; }
+        .footer_left_area > h1 { font-weight: 900; font-size: 2.5rem; position: absolute; top: 100px; left: 20px;
+                                 font-family: 'Apple SD Gothic NEO',sans-serif!important;}
+        .footer_left_area > span { width: 90px; height: 5px; background-color: #000; position: absolute; 
+                                   left: 20px; top:90px;}
+        .open_time { position: absolute; font-size: .8rem; font-weight: 700; color: #666; top: 160px; left: 20px;}
+        .thin_row1 { position: absolute; top: 210px; left: 20px; width: 500px; height: 2px; 
+                     background-color: #000;}
+        .insIcon { position: relative; top: 220px; left: 10px; margin: 10px; transition: .3s;}
+        .insIcon:hover { position: relative; top: 210px; }
+        .thin_row2 { position: absolute; top: 300px; left: 20px; width: 500px; height: 2px; background-color: #000;}
+        .domain { position: absolute; top:330px; left: 20px; font-size: .8rem; font-weight: 700; color: #fff;}
+        /*--------------------------------------------푸터 오른쪽----------------------------------------*/
+        .footer_right_area { width: 600px; height: 470px; float: left; position: relative; top:0px;}
+        .category { font-size: 1.2rem; font-weight: 600; color: #444; float: left; margin-right: 60px; 
+                    position: relative; top: 90px;}
+        .sur_ { position: absolute; font-size: .7rem; font-weight: 700; color: #666; line-height: 20px; 
+                width: 100px; top: 120px;}
+        .category5 { left: 0px; top: 100px;  width: 100px;}
+        .category6 { left: 115px;}
+        .category7 { left: 240px;}
+        .subcri { font-size: 1.3rem; font-weight: 700; position: absolute; top: 220px;}
+        input[type="text"] { width: 200px; height: 20px; border: 1px solid #fff; background-color: inherit;                              position: absolute; top:310px; left: 0; color: #fff; font-weight: 700; padding: 5px;}
+        .subcri_btn { width: 100px; height: 30px; background-color: #fff; line-height: 32px; position: absolute;                 top:310px; left: 260px; text-align: center; font-weight: 700; }
+        .subcri_btn:hover { background-color: #000; color: orangered;}
+        
+        /**/
+        #wrapper4 > img { width: 100%;}
+        
+    </style>
+</head>
+<body>
+    <div id="wrapper1" class="wrapper"> <!--로고, 아이콘, 메뉴 및 첫번째 메인 이미지-->
+       <!--헤더 삽입영역-->
+         <header><!--로고, 아이콘-->
+            <a href="ratib/100_mainLayout.html"><img src="imgs/brand_logo_not_BG.png"  class="logoIcon"></a>
+            <a href="ratib/46_(F)shoppingCart(1).html"><img src="imgs/basket.svg" class="shoppingCartIcon"></a>
+            <a href="ratib/77_mypage.html"><img src="imgs/profile.svg" class="ProfileIcon" onclick=""></a>
+        </header>
+        <section class="menu-1"><!--메뉴-->
+            <ul>
+               <li><h2><a href="#" style="cursor: default">Ratib</a></h2>
+                        <ul>
+                            <li><h3><a href="ratib/50_aboutus.html">About Us</a></h3></li>
+                        </ul>
+                    </li>
+                    <li><h2><a href="#" style="cursor: default">Product</a></h2>
+                        <ul>
+                            <li><h3><a href="ratib/42_(F)DetoxJuiceList.html">Detox juice</a></h3></li>
+                            <li><h3><a href="ratib/43_(F)PowderList.html">1 day Powder</a></h3></li> 
+                            <li><h3><a href="ratib/44_(F)skincareList.html">Skin care</a></h3></li>
+                        </ul>
+                    </li>
+                    <li><h2><a href="#" style="cursor: default">Community</a></h2>
+                        <ul>
+                            <li><h3><a href="ratib/48_notice.html">Notice</a></h3></li>
+                            <li><h3><a href="ratib/48_3_qna.html">Q &amp; a</a></h3></li> 
+                            <li><h3><a href="ratib/48_2_review.html">Review</a></h3></li>
+                        </ul>
+                    </li>
+                </ul>
+        </section>
+        <div class="video1"><!--자연 비디오-->
+            <video src="ratib/video/ratib-1.mp4" autoplay loop muted></video> 
+        </div>
+    
+<!--
+        <div class="leafFrame">비디오 겉에 프레임 데코
+            <img src="../imgs/mintLeafFrame_final.png">
+            <p class="biglefttxt">R<br>&nbsp;a<br>&nbsp;t<br>&nbsp;i<br>&nbsp;b</p>
+            <p class="smalltoptxt">2020 s/s<br>new season</p>
+            <p class="bigrighttxt">Natural Healthy</p>
+            <div class="round"></div>
+            <span class="videorow"></span>
+        </div>
+-->
+    </div>
+    
+    
+    <div id="wrapper2" class="wrapper"><!--두번째 이미지-->
+      
+       <div id="subwrapper">
+          <div class="monthlyBest">
+              <h2>Monthly best Product</h2>
+              <span></span>
+          </div>
+           <div class="roundLeafImgs">
+               <img src="imgs/roundleaf.png" style=" width: 395px;">
+               <img src="imgs/roundleaf.png" style=" width: 395px; position: relative; left: -3px;">
+               <img src="imgs/roundleaf.png" style=" width: 395px; position: relative; left: -5px;">
+           </div>
+           <div class="nameTaglist">
+               <img src="imgs/nametag1.svg">
+               <img src="imgs/nametag1.svg">
+               <img src="imgs/nametag1.svg">
+           </div>
+
+
+           <div class="nametagtxtlist">
+               <p><a href="ratib/09_3_innocent_juice.html">Innocent Juice</a></p>
+               <p><a href="ratib/10_3_portiron.html">Potiron Powder</a></p>
+               <p><a href="ratib/11_4_skin4.html">Vitamin Oil</a></p>
+           </div>
+
+
+
+           <div class="pricetxtlist">
+               <p><a href="ratib/09_3_innocent_juice.html">$39.00~</a></p>
+               <p><a href="ratib/10_3_portiron.html">$49.00</a></p>
+               <p><a href="ratib/11_4_skin4.html">$25.00</a></p>
+           </div>
+
+
+           <div class="main2imgslist">
+               <img src="imgs/innocent_Juice.png" style=" width: 210px; position: absolute; left: 100px; top:10px;" class="i1"
+                onclick="location.href='ratib/09_3_innocent_juice.html'">
+               <img src="imgs/potiron_powder%20copy.png" style=" width: 240px; position: absolute; left: 500px; top:20px; "
+               class="i2" onclick="location.href='ratib/10_3_portiron.html'">
+               <img src="imgs/skin-care3.png" style=" width: 190px; position: absolute; left: 915px; top:10px;" class="i3" onclick="location.href='ratib/11_4_skin4.html'">
+           </div>
+
+
+        </div>
+    <div></div>
+    </div>
+    
+    
+    <!--세번째 이미지-->
+    <div id="wrapper3" class="wrapper">
+    
+       <div class="instagramImgs">
+           <h2>Instagram</h2>
+           <span></span>
+           <div><img src="imgs/new_instagram1.png"></div>
+           <div><img src="imgs/new_instagram2.png"></div>
+           <div><img src="imgs/new_instagram3.png"></div>
+           <div><img src="imgs/new_instagram4.png"></div>
+           <div><img src="imgs/new_instagram5.png"></div>
+           <div><img src="imgs/new_instagram6.png"></div>
+       </div>
+    </div>
+    
+    
+    <!--네번째 이미지 및 푸터-->
+    <div id="wrapper4" class="wrapper">
+    <img src="imgs/footer4.png">
+    <img src="imgs/footer.png" class="footerBg">
+    
+    <!-- 푸터삽입영역 -->
+    <footer>
+           
+            <div class="footer_left_area">
+                    <span class="h1row"></span>
+                    <h1 class="tel">070-4133-9999</h1>
+                    <p class="open_time">
+                    AM 10:00 ~ PM 05:00 Off-time PM 12:00 ~ PM 02:00 <br>
+                    DAY OFF (SATURDAY. SUNDAY, HOLIDAY)
+                    </p>
+                    <div class="thin_row1"></div>
+                    <a href="#"><img src="btnIcon/instagram_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="btnIcon/facebook_btn.svg" width="48px" class="insIcon"></a>
+                    <a href="#"><img src="btnIcon/twitter_btn.svg" width="48px" class="insIcon"></a>
+                    <div class="thin_row2"></div>
+                    <p class="domain">
+                    사업자명 (주)네이키드베지터블스 ㅣ 대표이사 윤예린 ㅣ 사업자등록번호 356-81-01648<br>
+                    대표전화 070-4133-9999 ㅣ 통신판매업신고번호 제 2019-성남분당B-0439 호<br>
+                    주소 서울특별시 서초구 강남대로 39길 6-7, 154 개인정보보안책임자 윤예린 070-4133-9999 ㅣ<br>
+                    copyright (c) All Right Reserved Hosting by wook</p>
+            </div>
+            <div class="footer_right_area">
+                    <p class="category">Ratib&nbsp;&nbsp;</p>   
+                    <p class="category">Product</p>   
+                    <p class="category">Community</p>   
+                    <p class="category">Mypage</p><br>
+                    <p class="sur_ category5"><br>about us</p>  
+                    <p class="sur_ category6">Detox Juice<br>1 Day powder<br>Skin care</p>  
+                    <p class="sur_ category7">Notice<br>QnA<br>Review</p> 
+                    <p class="subcri">
+                    Join our newsletter and keep up to date<br>
+                    with the latest products, special offers from RATIB.
+                    </p>
+                    <input type="text" placeholder="Enter E-mail">
+                    <div class="subcri_btn">Subcribe</div>
+            </div>
+</footer>
+    
+    </div>
+    
+
+    <!--다섯번째 이미지 및 푸터-->
+   
+</body>
+</html>

@@ -1,0 +1,62 @@
+.subvisual img { width: 100%;}
+#content { clear: both; overflow: hidden;}
+#content h2 { font-weight: bold; font-size: 20px; color: #777; padding: 15px 20px 20px 20px;}
+#content h2::before {content: ""; width: 9px; height: 22px; background: #0090C2; display: block; float: left; margin-right: 5px;}
+.list { padding: 20px 10px 20px 20px; overflow: hidden; float: right;}
+.list span { display: block; color: #aaa; font-weight: 700; margin-right: 10px; float: left; }
+.list a:nth-of-type(1) span::after,.list a:nth-of-type(2) span::after { content: ""; display: block; width: 3px; height: 3px; background: #ddd; border-radius: 50%; float: right; margin: 7px 0 0 7px;}
+.list a:nth-of-type(3) span { color: #00506c;}
+.table_borde h3{ color:#007ca7; font-weight: bold; font-size: 16px; padding: 10px 0 15px 5px;}
+
+
+.tabs { position: relative; height: 400px;}
+
+.tabs a.tab {
+    clear: both;
+    display: block;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    background: #137da2;
+    opacity: .7;
+    padding: 13px 0;
+}
+
+.tabs a.tab1 {
+    width: 50%;
+    left: 0;
+    top: 0;
+    
+}
+
+.tabs a.tab2 {
+    width: 50%;
+    left: 50%;
+    top: 0
+}
+
+.tabs .contlist {
+    margin-top: 0px;
+    display: block;
+    padding: 40px 10px;
+    line-height: 1.5em;
+}
+
+
+/*본사*/
+.comment { overflow: hidden; line-height: 2em;}
+.comment dt { float: left; font-weight: bold; min-width: 50px;
+font-size: 16px; color: #333; }
+.comment dd { margin-left: 70px; }
+.comment dd:nth-of-type(3) span { width: 8px; height: 8px; background: #32AF56; display: block; border-radius: 50%; float: left;margin: 9px 10px 0 0;}
+.comment dd:nth-of-type(4) span { width: 8px; height: 8px; background: #345BBA; display: block; border-radius: 50%; float: left;margin: 9px 10px 0 0;}
+
+
+
+
+
+
+

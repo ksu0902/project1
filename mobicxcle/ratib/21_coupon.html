@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>쿠폰페이지</title>
+    <style>
+         * { margin: 0; padding: 0;}
+        html, body { width: 100%; height: 100%; background-color: #f6f5e9;  font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;}
+        #wrapper { width: 100%; height: 1500px; position: relative; top:750px; left: 50%; transform: translate(-50%,-50%);}
+        header { width: 1200px; height: 200px; position: relative; top:100px; left: 50%; transform: translate(-50%,-50%); 
+                 }
+        .logoIcon { position: absolute; top: 35px; left: 50%; margin-left: -65px; }
+        .shoppingCartIcon { position: absolute; top: 80px; left: 90%; margin-left:-38px;}
+        .ProfileIcon { position: absolute; top: 80px; left: 100%; margin-left:-76px;}
+         /*----------------------------------------네비게이션---------------------------------------------*/
+        ul,li { font-family: 'Vollkorn', serif; font-weight: 200;}
+        a { text-decoration: none; color: inherit;}
+        .menu-1 { text-align: center; position: relative; top:0px; z-index: 7}
+        .menu-1 > ul { display:inline-block; width: 100%; height: 60px; line-height: 60px; border-top:1px solid #444; 
+                        border-bottom: 1px solid #000; box-sizing: border-box;} /*--nav--*/
+        .menu-1 > ul >li { display: inline-block; width: 250px; font-size: 1.2rem; } /*--메인 메뉴--*/
+        .menu-1 > ul >li >a { display: block; text-decoration: none; color: inherit;  transition: .5s;} /*--메인A태그 메뉴--*/
+        .menu-1 > ul >li >a:after { content: ""; width: 0; height: 3; background-color: inherit; position: absolute;
+                                    top: 45px; left: 50px; transition: .5s;}
+/*
+        .menu-1 > ul >li:hover >a { background-color: #dbdace; height: 58px; width: 250px; display: block; 
+                                    border-radius: 30px 0 30px 0;} --메인 호버--
+*/
+        .menu-1 > ul >li >a:hover::after { content: ""; width: 150px; height: 3px; background-color: #ccc4be; position: absolute;
+                                    top: 45px; left: 50px;}
+        .menu-1 li { position: relative; }
+        .menu-1 li li { position: relative; border: 1px solid #444; margin-top:10px; list-style: none; font-size: .9rem; bottom: 0;
+                        font-weight: 200; height: 40px; line-height: 40px; border-radius: 20px; transition: .5s; background-color: inherit;} /*--서브 메뉴 객체--*/
+       
+        .menu-1 li li:hover { height: 180%; top:200%; background-color: #8e8a66; color: white} /*--서브 메뉴 호버--*/
+        .menu-1 li li >a { display: block; text-decoration: none; color: inherit; }/*--서브 메뉴 A태그.--*/
+        .menu-1 ul ul { display: none; position: absolute; }  /*--서브 메뉴 전체.--*/
+        
+        .menu-1 li:hover > ul { display: block; text-align: center; width: 250px;}  /*--메인 호버하면 ul이 나타나는것.--*/
+         /*-------------------------------------------쿠폰 발급 페이지----------------------------------------------*/
+        nav { width:1200px; height: 1200px;  position: relative; top: 800px; left: 50%; transform: translate(-50%,-50%);}
+        .coupon1bg { width: 1200px; height: 735px; background-image: url(../imgs/coupon_bg.svg); background-size: 1201px;
+                     position: absolute; background-repeat: no-repeat;background-position: -1px -4px; background-color: #faf9f1;}/*height: 595px*/
+        h1 { font-weight: 900; text-align: center; font-size: 2rem; position: relative; top:10px;}
+        .row { width: 50px; height: 5px; background-color: #f0b88a;position: absolute; top: 100px;left: 50%; margin-left: -25px; 
+               display: inline-block;}
+        .txt1 { font-size: 0.8rem; font-weight: 100; text-align: center; position: absolute; top:150px; left: 50%; 
+                margin-left: -152.5px;}
+        .first_coupon { background-image: url(../imgs/coupon1.svg); background-size: 1500px; background-repeat: no-repeat;
+                        width: 248px; height: 162px; background-position: -819px -154px; position: absolute; top: 230px;left: 50%;
+                        margin-left:-124px; }
+        .thinrow { background-color: #898988; width: 416px; height: 1px; position: absolute; top: 430px; left: 50%; margin-left: -208px;}
+        .txt2 { font-size: 0.9rem; font-weight: 300; position: absolute; left: 50%; top: 440px; margin-left: -206px;}
+        label input { width: 220px; height: 70px; display: inline-block; border:none; background-color: #8e8a61;font-size: 1.2rem; font-weight: 600; position: absolute; top: 78%; left: 50%; margin-left: -110px; cursor: pointer;}
+        label input:hover { color: ivory;}
+        /*------------쿠폰2--------------*/
+        .coupon2bg { width: 1200px; height: 405px; position: absolute; top: 695px; background-color: #f1f0de; }
+        .coupon2 { width: 199px; height: 131px; position: absolute; top:50%; left: 60px;margin-top: -69.5px;    
+         background-image: url(../imgs/coupon2.svg); background-repeat: no-repeat; background-position:-889px -108px ; background-size: 1200px;}
+        .coupon2h1 { width 300px; height: 50px; background-color: #d6d39d; display: inline-block; position: absolute; top:80px; 
+                     left: 50%;margin-left: -273px; line-height: 50px;}
+        .txt3 { font-size: 1rem; font-weight: 300; position: absolute; left: 50%; top: 180px; margin-left: -270px;}
+        .thinrow2 { width: 430px; height: 2px; background-color: #898988; position: absolute; top:250px; left: 330px;}
+        .btn2 { width: 240px; height: 67px; background-color: #fffef2; position: relative; top: 280px; left: 330px; cursor: pointer;}
+        .btn2 > span { width: 218px; height: 45px; border: 1px solid #b8b8b8; box-sizing: border-box; display: inline-block;
+                       position: absolute; top: 50%; margin-top: -22.5px; left: 50%; margin-left: -109px; line-height: 45px;
+                       text-align: center;}
+        .btn3 { width: 206px; height: 67px; background-color: #bab581; position: relative; top:213px; left: 630px; cursor: pointer;}
+        .btn3 > span { width: 184px; height: 45px; border: 1px solid #fcfae1; box-sizing: border-box; display: inline-block;
+                       position: absolute; top: 50%; margin-top: -22.5px; left: 50%; margin-left: -92px; text-align: center;
+                       line-height: 45px;}
+        /*----------------------------------------푸터---------------------------------------------*/
+        .footer_wrapper {  background: url(../imgs/footer.svg)no-repeat; background-size: 100%; height: 510px; position: relative;
+                         width: 100%; position: relative; left: 0; bottom: 0px; top:300px;}
+        /*----------------------------------------왼쪽 푸터---------------------------------------------*/
+        .left_footer { width: 500px; height: 310px; position: relative; left: 20%; top:140px; margin: 0;}
+        .short_row { width: 70px; height: 5px; background-color: #000; position: absolute; }
+        .tel { position: absolute; top: 10px; font-weight: 900; font-size: 2.5rem;}
+        .open_time { position: absolute; font-size: .8rem; font-weight: 700; color: #666; top: 60px;}
+        .thin_row1 { position: absolute; top: 110px; width: 500px; height: 2px; background-color: #000;}
+        .insIcon { position: relative; top: 120px; margin: 10px; transition: .2s;}
+        .insIcon:hover { position: relative; top:115px; }
+        .thin_row2 { position: absolute; top: 200px; left: 0; width: 500px; height: 2px; background-color: #000;}
+        .domain { position: absolute; top:230px; font-size: .8rem; font-weight: 700; color: #fff;}
+        /*----------------------------------------오른쪽 푸터---------------------------------------------*/
+        .right_footer { width: 600px; height: 310px; position: relative; top:-140px; left: 900px; }
+        .category { font-size: 1.2rem; font-weight: 600; color: #444; float: left; margin-right: 60px; position: relative; top:-20px;}
+        .sur_ { position: relative; font-size: .7rem; font-weight: 700; color: #666; line-height: 20px; width: 100px;}
+        .category5 {left: 0px; top:-10px; width: 100px;}
+        .category6 { left: 115px; top:-50px;}
+        .category7 { left: 240px; top: -110px;}
+    
+        .subcri { font-size: 1.3rem; font-weight: 700; position: absolute; top: 180px;}
+        input[type="text"] { width: 200px; height: 20px; border: 1px solid #fff; background-color: inherit; position: absolute;                              top:240px; color: #fff; font-weight: 700; padding: 5px;}
+        .subcri_btn { width: 100px; height: 30px; background-color: #fff; line-height: 32px; position: absolute; top:240px; 
+                      left: 220px; text-align: center; font-weight: 700; }
+        .subcri_btn:hover { background-color: #000; color: orangered;}
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+      <header>
+            <a href="100_mainLayout.html"><img src="../imgs/brand_logo_not_BG.png" width="130px" class="logoIcon"></a>
+            <a href="46_(F)shoppingCart(1).html"><img src="../imgs/basket.svg" width="38px" class="shoppingCartIcon"></a>
+            <a href="77_mypage.html"><img src="../imgs/profile.svg" width="38px" class="ProfileIcon"></a>
+        </header>
+        <section class="menu-1">
+                <ul>
+                    <li><a href="">Ratib</a>
+                        <ul>
+                            <li><a href="50_aboutus.html">About Us</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="">Product</a>
+                        <ul>
+                            <li><a href="42_(F)DetoxJuiceList.html">Detox juice</a></li>
+                            <li><a href="43_(F)PowderList.html">1 day Powder</a></li> 
+                            <li><a href="44_(F)skincareList.html">Skin care</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Community</a>
+                        <ul>
+                            <li><a href="48_notice.html">Notice</a></li>
+                            <li><a href="48_3_qna.html">Q &amp; a</a></li> 
+                            <li><a href="48_2_review.html">Review</a></li>
+                        </ul>
+                    </li>
+                </ul>
+        </section>
+    </div>
+        
+        <nav>
+            <div class="coupon1bg">
+                <h1>신규 가입자를 위한<br>RATIB의 첫 쿠폰 혜택</h1>
+                <span class="row"></span>
+                <p class="txt1">새로운 회원 모두에게 가입 즉시 쿠폰함으로 쿠폰을 넣어드립니다.<br>첫구매 쿠폰의 할인 혜택과 함께 첫 쇼핑을 시작해보세요.</p>
+                <div class="first_coupon"></div>
+                <span class="thinrow"></span>
+                <p class="txt2">
+                    사용조건: web 구매 이력이 없는 경우 (첫 구매 시) 사용가능 <br>
+                    최대 할인 금액: web 최대 10,000원<br>
+                    유의사항 : 구매금액 1만원 이하 사용시 쿠폰적용 불가<br>
+                    + 기존 회원은 마이페이지 > 쿠폰에서 확인 하실 수 있으며, 이미 구매를 한<br> 
+                    이력이 있는 경우 쿠폰은 보이지 않습니다.
+                </p>
+                <a href="#"><label><input type="button" value="회원가입하기"></label></a>
+            </div>
+            <div class="coupon2bg">
+                <div class="coupon2"></div>
+                <h1 class="coupon2h1">RATIB가 지금 드리는 쿠폰 혜택 : 중복할인 5% </h1>
+                <p class="txt3">발급 사용기한 : 2020. 99. 99 ~ 2020. 99. 99<br>
+                                유의사항 : 구매금액 1만원 이하 사용시 쿠폰적용 불가</p>
+                <span class="thinrow2"></span>
+                <a href="#"><div class="btn2"><span>지금 다운로드하기 > </span></div></a>
+                <a href="#"><div class="btn3"><span>쿠폰 혜택 자세히보기 > </span></div></a>
+            </div>
+        </nav>
+        
+       <footer>
+        <div class="footer_wrapper"> <!--푸터랩퍼에 이미지 백그라운드로 넣기.-->
+           
+            <div class="left_footer">
+            <span class="short_row"></span>
+            <h1 class="tel">070-4133-9999</h1>
+            <p class="open_time">
+            AM 10:00 ~ PM 05:00 Off-time PM 12:00 ~ PM 02:00 <br>
+            DAY OFF (SATURDAY. SUNDAY, HOLIDAY)
+            </p>
+            <span class="thin_row1"></span>
+            <a href="#"><img src="../btnIcon/instagram_btn.svg" width="48px" class="insIcon"></a>
+            <a href="#"><img src="../btnIcon/facebook_btn.svg" width="48px" class="insIcon"></a>
+            <a href="#"><img src="../btnIcon/twitter_btn.svg" width="48px" class="insIcon"></a>
+            <span class="thin_row2"></span>
+            <p class="domain">
+            사업자명 (주)네이키드베지터블스 ㅣ 대표이사 윤예린 ㅣ 사업자등록번호 356-81-01648<br>
+            대표전화 070-4133-9999 ㅣ 통신판매업신고번호 제 2019-성남분당B-0439 호<br>
+            주소 서울특별시 서초구 강남대로 39길 6-7, 154 개인정보보안책임자 윤예린 070-4133-9999 ㅣ<br>
+            copyright (c) All Right Reserved Hosting by wook</p>
+            </div>
+            <div class="right_footer">
+            <p class="category">Ratib&nbsp;&nbsp;</p>   
+            <p class="category">Product</p>   
+            <p class="category">Community</p>   
+            <p class="category">Mypage</p><br>
+            <p class="sur_ category5"><br>about us</p>  
+            <p class="sur_ category6">Detox Juice<br>1 Day powder<br>Skin care</p>  
+            <p class="sur_ category7">Notice<br>QnA<br>Review</p>  
+            
+             
+                
+            <p class="subcri">
+            Join our newsletter and keep up to date<br>
+            with the latest products, special offers from RATIB.
+            </p>
+            <input type="text" placeholder="Enter E-mail">
+            <div class="subcri_btn">Subcribe</div>    
+            </div>
+            </div>
+       
+        
+    </footer>
+    
+</body>
+</html>
